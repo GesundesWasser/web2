@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="img/x-icon">
+    <style>
+        body {
+            background-color: #222; /* Darker background color */
+            font-family: 'Arial', sans-serif;
+            color: #fff; /* White text color for better readability */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Additional styles for better readability */
+        header, nav, main, footer {
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        button {
+            background-color: #555; /* Darker button color */
+            color: #fff; /* White text color for the button */
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        a {
+            color: #fff; /* White color for links */
+            text-decoration: none;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center; /* Center the form within its container */
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px; /* Set a fixed height for the header */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #successMessage, #errorMessage {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Stellar Login</h1>
+    </header>
+
+    <form method="post" action="stellar">
+        <label for="passcode">Enter Password:</label>
+        <input type="password" id="passcode" name="passcode" placeholder="Password" />
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="successMessage" style="display:none;">Login successful! Redirecting...</p>
+    <p id="errorMessage" style="display:none;">Incorrect username or password. Please try again.</p>
+
+<footer>
+</footer>
