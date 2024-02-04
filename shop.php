@@ -89,7 +89,7 @@
         <header>
             <div class="user-info">
                 <a href="site">
-                    <img src="/img/upload/<?php echo isset($userImage) ? $userImage : 'default-user.png'; ?>" alt="User Icon">
+                    <img src="/var/www/upload/<?php echo isset($userImage) ? $userImage : 'default-user.png'; ?>" alt="User Icon">
                 </a>
                 <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
             </div>
