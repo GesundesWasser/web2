@@ -87,12 +87,12 @@
     <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
         <!-- Your header content here -->
         <header>
-            <div class="user-info">
-                <a href="site">
-                    <img src="/var/www/upload/<?php echo isset($userImage) ? $userImage : 'default-user.png'; ?>" alt="User Icon">
-                </a>
-                <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
-            </div>
+        <div class="user-info">
+    <a href="site">
+        <img src="/var/www/upload/<?php echo htmlspecialchars($userImage); ?>" alt="User Icon">
+    </a>
+    <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
+</div>
 
             <div class="coin-info">
                 <img src="img/coin.png" alt="Coin">
