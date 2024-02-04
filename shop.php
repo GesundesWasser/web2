@@ -1,76 +1,6 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-session_start();
-
-// Replace with your actual MySQL database details
-$host = "localhost";
-$username = "web";
-$password = "bodenkapsel";
-$database = "users";
-
-$mysqli = new mysqli($host, $username, $password, $database);
-
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $enteredUsername = $_POST["username"];
-    $enteredPasscode = $_POST["passcode"];
-
-    // Query the database to get the hashed password and image associated with the entered username
-    $query = "SELECT passcode, image, coins FROM users WHERE username = ?";
-    $stmt = $mysqli->prepare($query);
-
-    if (!$stmt) {
-        die("Error in query preparation: " . $mysqli->error);
-    }
-
-    $stmt->bind_param("s", $enteredUsername);
-    $stmt->execute();
-    $stmt->bind_result($hashedPassword, $userImage, $coinCount);
-
-    if ($stmt->fetch()) {
-        // Verify the entered password against the stored hash
-        if (password_verify($enteredPasscode, $hashedPassword)) {
-            // Password is correct, store the user in the session
-            $_SESSION['user'] = $enteredUsername;
-            echo "Login Successful";
-        } else {
-            // Handle the case where an Invalid Password is Detected
-            echo "Invalid Password";
-        }
-    } else {
-        // Handle the case where an Invalid Username is Detected
-        echo "Invalid Username";
-    }
-
-    $stmt->close();
-}
-
-// Check if the user is logged in
-if (isset($_SESSION['user'])) {
-    // Fetch user information (coins and userImage) from the database
-    $loggedInUser = $_SESSION['user'];
-    $userQuery = "SELECT coins, image FROM users WHERE username = ?";
-    $userStmt = $mysqli->prepare($userQuery);
-
-    if (!$userStmt) {
-        die("Error in user query preparation: " . $mysqli->error);
-    }
-
-    $userStmt->bind_param("s", $loggedInUser);
-    $userStmt->execute();
-    $userStmt->bind_result($coinCount, $userImage);
-
-    // Fetch the result before displaying the main content
-    if ($userStmt->fetch()) {
-        // Display the main HTML content
-        ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,12 +14,12 @@ if (isset($_SESSION['user'])) {
             margin: 0;
             font-family: 'Arial', sans-serif;
             padding: 0;
-            width: 100%;
         }
 
         header,
         main,
         footer {
+            width: 100%;
             text-align: center;
         }
 
@@ -154,68 +84,58 @@ if (isset($_SESSION['user'])) {
 </head>
 
 <body>
-    <!-- Your header content here -->
-    <header>
-        <div class="user-info">
-            <a href="site">
-                <img src="img/<?php echo isset($userImage) ? $userImage : 'default-image.png'; ?>" alt="User Icon">
-            </a>
-            <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
-        </div>
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+        <!-- Your header content here -->
+        <header>
+            <div class="user-info">
+                <a href="site">
+                    <img src="/img/upload/<?php echo isset($userImage) ? $userImage : 'default-user.png'; ?>" alt="User Icon">
+                </a>
+                <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
+            </div>
 
-        <div class="coin-info">
-            <img src="img/coin.png" alt="Coin">
-            <span>COINS: <?php echo isset($coinCount) ? $coinCount : 0; ?></span>
-        </div>
-    </header>
+            <div class="coin-info">
+                <img src="img/coin.png" alt="Coin">
+                <span>COINS: <?php echo isset($coinCount) ? $coinCount : 0; ?></span>
+            </div>
+        </header>
+    </div>
 
-    <main>
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+        <main>
+            <section id="section1">
+                <h2>Download Pass</h2>
+                <p>Der Download Pass Pro Plus Ultra Premium Max</p>
+            </section>
 
-        <section id="section1">
-            <h2>Download Pass</h2>
-            <p>Der Download Pass Pro Plus Ultra Premium Max</p>
-        </section>
+            <section id="section2">
+                <img src="img/wwago.png" alt="Bild von WWAGO">
+                <h2>WWAGO</h2>
+                <p>Der OG WWAGO für 3 WWAGO Coins!</p>
+                <button onclick="alert('Kauf Felgeschlagen!')">Kaufen!</button>
+            </section>
 
-        <section id="section2">
-            <img src="img/wwago.png" alt="Bild von WWAGO">
-            <h2>WWAGO</h2>
-            <p>Der OG WWAGO für 3 WWAGO Coins!</p>
-            <button onclick="alert('Kauf Felgeschlagen!')">Kaufen!</button>
-        </section>
+            <section id="section3">
+                <img src="img/wwago-kaputt.png" alt="Bild von Kaputten WWAGO :(">
+                <h2>Kaputter WWAGO :(</h2>
+                <p>Der Aller Beste WWAGO in der Kaputten Form! (Wieso willst du einen kaputten?)</p>
+                <button onclick="alert('Kauf Felgeschlagen!')">Kaufen!</button>
+            </section>
 
-        <section id="section3">
-            <img src="img/wwago-kaputt.png" alt="Bild von Kaputten WWAGO :(">
-            <h2>Kaputter WWAGO :(</h2>
-            <p>Der Aller Beste WWAGO in der Kaputten Form! (Wieso willst du einen kaputten?)</p>
-            <button onclick="alert('Kauf Felgeschlagen!')">Kaufen!</button>
-        </section>
+            <section id="section4">
+                <img src="img/wago_klemme.png" alt="Bild von WAGO Klemme">
+                <h2>WAGO Klemme</h2>
+                <p>DER NEUE WAGO KLEMMEN WWAGO (der eigentlich gar keiner ist!)</p>
+                <button onclick="alert('Kauf Felgeschlagen!')">Kaufen!</button>
+            </section>
+        </main>
+    </div>
 
-        <section id="section4">
-            <img src="img/wago_klemme.png" alt="Bild von WAGO Klemme">
-            <h2>WAGO Klemme</h2>
-            <p>DER NEUE WAGO KLEMMEN WWAGO (der eigentlich gar keiner ist!)</p>
-            <button onclick="alert('Kauf Felgeschlagen!')">Kaufen!</button>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>&copy; WWAGO-Sites Inc.</p>
-    </footer>
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+        <footer>
+            <p>&copy; WWAGO-Sites Inc.</p>
+        </footer>
+    </div>
 </body>
+
 </html>
-        <?php
-    } else {
-        // Handle the case where user information couldn't be retrieved
-        echo "Error retrieving user information.";
-    }
-
-    $userStmt->close();
-} else {
-    // If the user is not logged in, you can redirect them to the login page or show a login form.
-    // Example: header("Location: login.php");
-}
-
-// Close the database connection
-$mysqli->close();
-?>
