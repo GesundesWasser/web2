@@ -85,14 +85,54 @@
 
 <body>
     <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+        <?php
+        // Your PHP code for database connection and form processing
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $enteredUsername = $_POST["username"];
+            $enteredPasscode = $_POST["passcode"];
+
+            // Query the database to get the hashed password and image associated with the entered username
+            $query = "SELECT passcode, image, coins FROM users WHERE username = ?";
+            $stmt = $mysqli->prepare($query);
+
+            if (!$stmt) {
+                die("Error in query preparation: " . $mysqli->error);
+            }
+
+            $stmt->bind_param("s", $enteredUsername);
+            $stmt->execute();
+            $stmt->bind_result($hashedPassword, $userImage, $coinCount);
+
+            if ($stmt->fetch()) {
+                // Verify the entered password against the stored hash
+                if (password_verify($enteredPasscode, $hashedPassword)) {
+                    // Password is correct, store the user in the session
+                    $_SESSION['user'] = $enteredUsername;
+                    echo "Login Successful";
+                } else {
+                    // Handle the case where an Invalid Password is Detected
+                    echo "Invalid Password";
+                }
+            } else {
+                // Handle the case where an Invalid Username is Detected
+                echo "Invalid Username";
+            }
+
+            $stmt->close();
+
+            // Debugging output
+            var_dump($enteredUsername, $enteredPasscode, $hashedPassword, $userImage, $coinCount);
+        }
+        ?>
         <!-- Your header content here -->
         <header>
-        <div class="user-info">
-    <a href="site">
-        <img src="/var/www/upload/<?php echo htmlspecialchars($userImage); ?>" alt="User Icon">
-    </a>
-    <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
-</div>
+            <div class="user-info">
+                <a href="site">
+                    <img src="/var/www/upload/<?php echo isset($userImage) ? $userImage : 'default-user.png'; ?>" alt="User Icon">
+                </a>
+                <span><?php echo isset($_SESSION['user']) ? "Hiya! " . $_SESSION['user'] : "USERNAME: "; ?></span>
+            </div>
 
             <div class="coin-info">
                 <img src="img/coin.png" alt="Coin">
