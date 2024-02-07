@@ -85,47 +85,54 @@
 
 <body>
     <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
-        <?php
-        // Your PHP code for database connection and form processing
+    <?php
+session_start(); // Start the session
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $enteredUsername = $_POST["username"];
-            $enteredPasscode = $_POST["passcode"];
+// Database connection setup
+$mysqli = new mysqli("localhost", "username", "password", "database");
 
-            // Query the database to get the hashed password and image associated with the entered username
-            $query = "SELECT passcode, image, coins FROM users WHERE username = ?";
-            $stmt = $mysqli->prepare($query);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
 
-            if (!$stmt) {
-                die("Error in query preparation: " . $mysqli->error);
-            }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $enteredUsername = $_POST["username"];
+    $enteredPasscode = $_POST["passcode"];
 
-            $stmt->bind_param("s", $enteredUsername);
-            $stmt->execute();
-            $stmt->bind_result($hashedPassword, $userImage, $coinCount);
+    // Query the database to get the hashed password and image associated with the entered username
+    $query = "SELECT passcode, image, coins FROM users WHERE username = ?";
+    $stmt = $mysqli->prepare($query);
 
-            if ($stmt->fetch()) {
-                // Verify the entered password against the stored hash
-                if (password_verify($enteredPasscode, $hashedPassword)) {
-                    // Password is correct, store the user in the session
-                    $_SESSION['user'] = $enteredUsername;
-                    echo "Login Successful";
-                } else {
-                    // Handle the case where an Invalid Password is Detected
-                    echo "Invalid Password";
-                }
-            } else {
-                // Handle the case where an Invalid Username is Detected
-                echo "Invalid Username";
-            }
+    if (!$stmt) {
+        die("Error in query preparation: " . $mysqli->error);
+    }
 
-            $stmt->close();
+    $stmt->bind_param("s", $enteredUsername);
+    $stmt->execute();
+    $stmt->store_result(); // Store the result to use num_rows
+    $stmt->bind_result($hashedPassword, $userImage, $coinCount);
 
-            // Debugging output
-            var_dump($enteredUsername, $enteredPasscode, $hashedPassword, $userImage, $coinCount);
+    if ($stmt->num_rows > 0 && $stmt->fetch()) {
+        // Verify the entered password against the stored hash
+        if (password_verify($enteredPasscode, $hashedPassword)) {
+            // Password is correct, store the user in the session
+            $_SESSION['user'] = $enteredUsername;
+            echo "Login Successful";
+        } else {
+            // Handle the case where an Invalid Password is Detected
+            echo "Invalid Password";
         }
-        ?>
-        <!-- Your header content here -->
+    } else {
+        // Handle the case where an Invalid Username is Detected
+        echo "Invalid Username";
+    }
+
+    $stmt->close();
+
+    // Debugging output
+    var_dump($enteredUsername, $enteredPasscode, $hashedPassword, $userImage, $coinCount);
+}
+?>
         <header>
             <div class="user-info">
                 <a href="site">
@@ -173,7 +180,7 @@
 
     <div style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
         <footer>
-            <p>&copy; WWAGO-Sites Inc.</p>
+            <p>&copy; WWAGO Studios</p>
         </footer>
     </div>
 </body>
