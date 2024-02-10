@@ -45,6 +45,7 @@ $conn->close();
             background-color: #f2f2f2;
         }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9235748631542962" crossorigin="anonymous"></script>
 </head>
 <body>
 
