@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Example form:
     ?>
+    
     <form method="post" action="">
         Username: <input type="text" name="username"><br>
         Password: <input type="password" name="passcode"><br>
@@ -65,3 +66,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the database connection
 $mysqli->close();
 ?>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9235748631542962" crossorigin="anonymous"></script>
