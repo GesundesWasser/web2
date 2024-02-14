@@ -17,6 +17,7 @@
 
         .container {
             text-align: center;
+            width: 100%;
         }
 
         .form-container {
@@ -25,6 +26,7 @@
             border-radius: 5px;
             margin-top: 20px;
             width: 300px;
+            margin: auto; /* Center the form */
         }
 
         label {
