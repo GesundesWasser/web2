@@ -1,10 +1,11 @@
 <?php
 // Database connection
-$servername = "localhost";
+$servername = "172.17.0.4";
 $username = "wwago"; // Your MySQL username
 $password = "bodenkapsel"; // Your MySQL password
 $database = "database"; // Your database name
-$conn = new mysqli($servername, $username, $password, $database);
+$port = "3306"; // Your MySQL port
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
 // Check connection
 if ($conn->connect_error) {
