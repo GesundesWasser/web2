@@ -38,9 +38,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             // Password correct, set session variable
             $_SESSION['logged_in'] = true;
-            // Redirect to the second file
-            header("Location: otherone.php");
-            exit();
+            // Redirect to the second file with login query
+            if(isset($_GET['login'])) {
+                $login_dest = $_GET['login'];
+                switch ($login_dest) {
+                    case '1':
+                        header("Location: one.php");
+                        exit();
+                    case '2':
+                        header("Location: otherone.php");
+                        exit();
+                    // Add more cases for additional destinations
+                    default:
+                        // Default to a generic page
+                        header("Location: https://www.example.com");
+                        exit();
+                }
+            }
         } else {
             // Password incorrect
             echo "Login failed. Invalid password.";

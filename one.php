@@ -17,7 +17,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <title>Second File</title>
 </head>
 <body>
-    <h2>Welcome to the Other One!</h2>
+    <h2>Welcome to the One!</h2>
     <p>This content is only accessible after a successful login.</p>
 </body>
 </html>
