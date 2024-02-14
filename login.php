@@ -87,10 +87,15 @@ $conn->close();
             margin: 0;
         }
 
+        .container {
+            text-align: center;
+        }
+
         form {
             background-color: #333;
             padding: 20px;
             border-radius: 5px;
+            margin-top: 20px; /* Added margin to separate from the text */
         }
 
         label {
