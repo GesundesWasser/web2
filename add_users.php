@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$servername = "localhost";
+$servername = "mysql-mariadb";
 $username = "wwago"; // Your MySQL username
 $password = "bodenkapsel"; // Your MySQL password
 $database = "database"; // Your database name
