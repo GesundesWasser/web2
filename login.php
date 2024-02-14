@@ -24,7 +24,8 @@
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
-            width: 300px;
+            width: 300px; /* Adjusted width to match signup form */
+            margin: auto; /* Center the form */
         }
 
         label {
@@ -33,8 +34,7 @@
         }
 
         input[type="text"],
-        input[type="password"],
-        .button {
+        input[type="password"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
