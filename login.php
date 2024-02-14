@@ -4,7 +4,7 @@
     <title>Login</title>
     <style>
         body {
-            background-image: url('img/bodenkapsel.png'); /* Replace 'background_image.jpg' with the path to your image */
+            background-image: url('img/login.png'); /* Replace 'background_image.jpg' with the path to your image */
             background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
