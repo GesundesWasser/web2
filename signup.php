@@ -4,7 +4,7 @@
     <title>Sign Up</title>
     <style>
         body {
-            background-image: url('img/login.png');
+            background-image: url('img/login.png'); /* Replace 'background_image.jpg' with the path to your image */
             background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
@@ -24,7 +24,7 @@
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
-            width: 250px; /* Adjusted width to match login form */
+            width: 300px; /* Adjusted width to match login form */
             margin: auto; /* Center the form */
         }
 
