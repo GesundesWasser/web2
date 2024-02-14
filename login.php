@@ -39,26 +39,27 @@
             margin-bottom: 10px;
             border: none;
             border-radius: 3px;
+            color: #fff;
         }
 
         input[type="submit"],
         .button {
             width: 100%;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #fff;
+            color: #222;
             cursor: pointer;
+            font-size: 14px;
         }
 
         input[type="submit"]:hover,
         .button:hover {
-            background-color: #45a049;
+            background-color: #eee;
         }
 
         .signup-link {
             display: block;
             margin-top: 10px;
             text-decoration: none;
-            color: #fff;
         }
     </style>
 </head>
@@ -116,7 +117,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login" class="button">
             </form>
-            <a href="signup.php" class="signup-link button">Don't Have An Account? Signup</a>
+            <a href="signup.php" class="signup-link button" style="background-color: #fff; color: #222; font-size: 12px;">Don't Have An Account? Signup</a>
         </div>
     </div>
 </body>
