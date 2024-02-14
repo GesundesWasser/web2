@@ -44,7 +44,8 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        .signup-button {
             width: calc(100% - 20px);
             background-color: #4CAF50; /* Green color */
             color: #fff;
@@ -56,27 +57,10 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        input[type="submit"]:hover {
-            background-color: #45a049; /* Darker green color on hover */
-        }
-
-        .signup-button {
-            width: calc(100% - 20px); /* Adjusted button width */
-            background-color: #4CAF50; /* Green color */
-            color: #fff;
-            cursor: pointer;
-            font-size: 14px;
-            border: none; /* Remove border */
-            border-radius: 3px; /* Apply border radius */
-            padding: 10px; /* Apply padding */
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
-            margin-top: 10px; /* Adjusted margin-top */
-        }
-
+        input[type="submit"]:hover,
         .signup-button:hover {
             background-color: #45a049; /* Darker green color on hover */
         }
-
     </style>
 </head>
 <body>
