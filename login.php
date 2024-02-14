@@ -91,11 +91,12 @@ $conn->close();
             text-align: center;
         }
 
-        form {
+        .form-container {
             background-color: #333;
             padding: 20px;
             border-radius: 5px;
-            margin-top: 20px; /* Added margin to separate from the text */
+            margin-top: 20px;
+            width: 300px;
         }
 
         label {
@@ -105,7 +106,7 @@ $conn->close();
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
+            width: calc(100% - 20px); /* Adjusted width */
             padding: 10px;
             margin-bottom: 10px;
             border: none;
