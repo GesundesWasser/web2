@@ -53,6 +53,12 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        .signup-link {
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -109,6 +115,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login">
             </form>
+            <a href="signup.php" class="signup-link">Don't Have An Account? Signup</a>
         </div>
     </div>
 </body>
