@@ -4,7 +4,7 @@
     <title>Sign Up</title>
     <style>
         body {
-            background-image: url('background_image.jpg'); /* Replace 'background_image.jpg' with the path to your image */
+            background-image: url('img/login.png'); /* Replace 'background_image.jpg' with the path to your image */
             background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
@@ -47,7 +47,7 @@
 
         input[type="submit"],
         .signup-button {
-            width: calc(100% - 20px); /* Adjusted button width */
+            width: 100%; /* Make the button full width */
             background-color: #4CAF50; /* Green color */
             color: #fff;
             cursor: pointer;
