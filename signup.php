@@ -4,7 +4,8 @@
     <title>Sign Up</title>
     <style>
         body {
-            background-color: #222;
+            background-image: url('login.png'); /* Replace 'background_image.jpg' with the path to your image */
+            background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
             display: flex;
@@ -19,7 +20,7 @@
         }
 
         .form-container {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.7); /* Add transparency to the background color */
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
@@ -32,33 +33,41 @@
         }
 
         input[type="text"],
-        input[type="password"] {
-            width: calc(100% - 20px); /* Adjusted width */
+        input[type="password"],
+        .button {
+            width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
             border: none;
             border-radius: 3px;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1); /* Add transparency to the background color */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 3px;
-            background-color: #4CAF50;
-            color: white;
+        input[type="submit"],
+        .signup-button {
+            width: calc(100% - 20px); /* Adjusted button width */
+            background-color: #4CAF50; /* Green color */
+            color: #fff;
             cursor: pointer;
+            font-size: 14px;
+            border: none; /* Remove border */
+            border-radius: 3px; /* Apply border radius */
+            padding: 10px; /* Apply padding */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
+        input[type="submit"]:hover,
+        .signup-button:hover {
+            background-color: #45a049; /* Darker green color on hover */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Sign Up</h2>
-        <p>Please fill in this form to create an account.</p>
+        <p>Please fill out the following information to create an account.</p>
         <div class="form-container">
             <?php
             // Database connection
@@ -86,13 +95,13 @@
                 $username = mysqli_real_escape_string($conn, $username);
                 $password = mysqli_real_escape_string($conn, $password);
 
-                // Hash the password
+                // Hash password
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Insert user into database
                 $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
                 if ($conn->query($sql) === TRUE) {
-                    echo "User registered successfully!";
+                    echo "Account created successfully!";
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -103,7 +112,7 @@
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Sign Up">
+                <input type="submit" value="Sign Up" class="signup-button">
             </form>
         </div>
     </div>
