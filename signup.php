@@ -4,7 +4,7 @@
     <title>Sign Up</title>
     <style>
         body {
-            background-image: url('background_image.jpg'); /* Replace 'background_image.jpg' with the path to your image */
+            background-image: url('img/login.png'); /* Set The Background Image */
             background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
@@ -56,6 +56,7 @@
             border-radius: 3px; /* Apply border radius */
             padding: 10px; /* Apply padding */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
+            margin-top: 10px; /* Adjusted margin-top */
         }
 
         input[type="submit"]:hover,
@@ -114,7 +115,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Sign Up" class="signup-button">
             </form>
-            <p style="margin-top: 10px;">Already have an account? <a href="login.php">Login</a></p>
+            <p>Already have an account? <a href="login.php">Login</a></p>
         </div>
     </div>
 </body>
