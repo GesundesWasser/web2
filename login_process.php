@@ -38,15 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $login_dest = $_GET['login'];
                 switch ($login_dest) {
                     case '1':
-                        header("Location: https://www.google.com");
+                        echo "<script>window.location.href = 'https://www.google.com';</script>";
                         exit();
                     case '2':
-                        header("Location: https://www.bing.com");
+                        echo "<script>window.location.href = 'https://www.bing.com';</script>";
                         exit();
                     // Add more cases for additional destinations
                     default:
                         // Default to a generic page
-                        header("Location: https://www.example.com");
+                        echo "<script>window.location.href = 'https://www.example.com';</script>";
                         exit();
                 }
             }
@@ -69,12 +69,37 @@ $conn->close();
 </head>
 <body>
     <h2>Login</h2>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form id="loginForm" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"><br><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
     </form>
+
+    <script>
+        // Submit the form using JavaScript
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            // Perform form submission using AJAX
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "<?php echo $_SERVER["PHP_SELF"]; ?>?login=<?php echo isset($_GET['login']) ? $_GET['login'] : ''; ?>", true);
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // Check if the response contains a redirect script
+                    var redirectScript = xhr.responseText.trim();
+                    if (redirectScript.startsWith("<script>window.location.href")) {
+                        // Execute the redirect script
+                        eval(redirectScript);
+                    } else {
+                        // Display the response if it's not a redirect script
+                        console.log(xhr.responseText);
+                    }
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
 </body>
 </html>
