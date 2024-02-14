@@ -46,8 +46,9 @@
         }
 
         input[type="submit"],
-        .signup-button {
-            width: calc(100% - 20px);
+        .signup-button,
+        .login-button {
+            width: calc(100% - 20px); /* Adjusted button width */
             background-color: #4CAF50; /* Green color */
             color: #fff;
             cursor: pointer;
@@ -59,8 +60,31 @@
         }
 
         input[type="submit"]:hover,
-        .signup-button:hover {
+        .signup-button:hover,
+        .login-button:hover {
             background-color: #45a049; /* Darker green color on hover */
+        }
+
+        .signup-link {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .signup-button {
+            background-color: #fff; /* White color */
+            color: #222; /* Dark text color */
+            font-size: 12px;
+            display: inline-block;
+            padding: 10px 20px; /* Apply padding */
+            border: none; /* Remove border */
+            border-radius: 3px; /* Apply border radius */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        .signup-button:hover {
+            background-color: #eee; /* Lighter background color on hover */
         }
     </style>
 </head>
@@ -114,7 +138,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Sign Up" class="signup-button">
             </form>
-            <p>Already have an account? <a href="login.php">Login</a></p>
+            <p>Already have an account? <a href="login.php" class="login-button">Login</a></p>
         </div>
     </div>
 </body>
