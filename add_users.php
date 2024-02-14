@@ -4,7 +4,8 @@ $servername = "mysql-mariadb";
 $username = "wwago"; // Your MySQL username
 $password = "bodenkapsel"; // Your MySQL password
 $database = "database"; // Your database name
-$conn = new mysqli($servername, $username, $password, $database);
+$port = "3306"; // Your MySQL port
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
 // Check connection
 if ($conn->connect_error) {
