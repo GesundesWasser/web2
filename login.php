@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Add more cases for additional destinations
                     default:
                         // Default to a generic page
-                        header("Location: https://www.example.com");
+                        header("Location: site");
                         exit();
                 }
             }
