@@ -4,7 +4,7 @@
     <title>Sign Up</title>
     <style>
         body {
-            background-image: url('img/login.png'); /* Set The Background Image */
+            background-image: url('background_image.jpg'); /* Replace 'background_image.jpg' with the path to your image */
             background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
@@ -127,7 +127,7 @@
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Sign Up">
+                <input type="submit" value="Sign Up" class="signup-button">
             </form>
             <p>Already have an account? <a href="login.php">Login</a></p>
         </div>
