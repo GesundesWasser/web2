@@ -75,10 +75,11 @@
             color: #fff;
         }
 
-        .signup-button {
+        .signup-button,
+        .login-button {
             background-color: #fff; /* White color */
             color: #222; /* Dark text color */
-            font-size: 12px;
+            font-size: 14px;
             display: inline-block;
             padding: 10px 20px; /* Apply padding */
             border: none; /* Remove border */
@@ -86,7 +87,8 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        .signup-button:hover {
+        .signup-button:hover,
+        .login-button:hover {
             background-color: #eee; /* Lighter background color on hover */
         }
     </style>
