@@ -69,8 +69,8 @@
         }
 
         .signup-button {
-            background-color: #4CAF50; /* Green color */
-            color: #fff; /* White text */
+            background-color: #fff; /* White color */
+            color: #222; /* Dark text color */
             font-size: 12px;
             display: inline-block;
             padding: 10px 20px; /* Apply padding */
@@ -80,7 +80,7 @@
         }
 
         .signup-button:hover {
-            background-color: #45a049; /* Darker green color on hover */
+            background-color: #eee; /* Lighter background color on hover */
         }
     </style>
 </head>
