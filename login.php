@@ -32,7 +32,8 @@
         }
 
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        .button {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
@@ -40,21 +41,21 @@
             border-radius: 3px;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        .button {
             width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 3px;
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        .button:hover {
             background-color: #45a049;
         }
 
         .signup-link {
+            display: block;
             margin-top: 10px;
             text-decoration: none;
             color: #fff;
@@ -113,9 +114,9 @@
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" class="button">
             </form>
-            <a href="signup.php" class="signup-link">Don't Have An Account? Signup</a>
+            <a href="signup.php" class="signup-link button">Don't Have An Account? Signup</a>
         </div>
     </div>
 </body>
