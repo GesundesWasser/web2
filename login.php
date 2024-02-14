@@ -44,11 +44,11 @@
 
         input[type="submit"],
         .button {
-            width: 100%;
+            width: calc(100% - 20px); /* Adjusted button width */
             background-color: #fff;
             color: #222;
             cursor: pointer;
-            font-size: 12px; /* Smaller font size */
+            font-size: 14px;
         }
 
         input[type="submit"]:hover,
