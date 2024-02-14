@@ -69,13 +69,18 @@
         }
 
         .signup-button {
-            background-color: #fff;
-            color: #222;
+            background-color: #4CAF50; /* Green color */
+            color: #fff; /* White text */
             font-size: 12px;
+            display: inline-block;
+            padding: 10px 20px; /* Apply padding */
+            border: none; /* Remove border */
+            border-radius: 3px; /* Apply border radius */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
         .signup-button:hover {
-            background-color: #eee;
+            background-color: #45a049; /* Darker green color on hover */
         }
     </style>
 </head>
@@ -133,7 +138,9 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login" class="login-button">
             </form>
-            <a href="signup.php" class="signup-link button signup-button">Don't Have An Account? Signup</a>
+            <a href="signup.php" class="signup-link">
+                <button class="signup-button">Don't Have An Account? Signup</button>
+            </a>
         </div>
     </div>
 </body>
