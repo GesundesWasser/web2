@@ -45,15 +45,15 @@
         input[type="submit"],
         .login-button {
             width: calc(100% - 20px); /* Adjusted button width */
-            background-color: #fff;
-            color: #222;
+            background-color: #4CAF50; /* Green color */
+            color: #fff;
             cursor: pointer;
             font-size: 14px;
         }
 
         input[type="submit"]:hover,
         .login-button:hover {
-            background-color: #eee;
+            background-color: #45a049; /* Darker green color on hover */
         }
 
         .signup-link {
@@ -64,13 +64,13 @@
         }
 
         .signup-button {
-            background-color: #4CAF50; /* Green color */
-            color: #fff; /* White text */
+            background-color: #fff;
+            color: #222;
             font-size: 12px;
         }
 
         .signup-button:hover {
-            background-color: #45a049; /* Darker green color on hover */
+            background-color: #eee;
         }
     </style>
 </head>
