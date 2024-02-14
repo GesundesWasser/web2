@@ -33,8 +33,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User found, verify password
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            // Password correct, login successful
-            echo "Login successful!";
+            // Password correct, redirect based on login parameter
+            if(isset($_GET['login'])) {
+                $login_dest = $_GET['login'];
+                switch ($login_dest) {
+                    case '1':
+                        header("Location: https://www.google.com");
+                        exit();
+                    case '2':
+                        header("Location: https://www.bing.com");
+                        exit();
+                    // Add more cases for additional destinations
+                    default:
+                        // Default to a generic page
+                        header("Location: https://www.example.com");
+                        exit();
+                }
+            }
         } else {
             // Password incorrect
             echo "Login failed. Invalid password.";
@@ -54,7 +69,7 @@ $conn->close();
 </head>
 <body>
     <h2>Login</h2>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?<?php echo isset($_GET['login']) ? 'login='.$_GET['login'] : ''; ?>" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"><br><br>
         <label for="password">Password:</label>
