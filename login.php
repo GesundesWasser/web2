@@ -124,7 +124,7 @@
                 if ($result->num_rows == 1) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['password'])) {
-                        echo "Login successful!";
+                        header("Location: stellar");
                     } else {
                         echo "Login failed. Invalid username or password.";
                     }
