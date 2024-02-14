@@ -38,15 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $login_dest = $_GET['login'];
                 switch ($login_dest) {
                     case '1':
-                        header("Location: https://www.google.com");
+                        echo "<script>window.location.href = 'https://www.google.com';</script>";
                         exit();
                     case '2':
-                        header("Location: https://www.bing.com");
+                        echo "<script>window.location.href = 'https://www.bing.com';</script>";
                         exit();
                     // Add more cases for additional destinations
                     default:
                         // Default to a generic page
-                        header("Location: https://www.example.com");
+                        echo "<script>window.location.href = 'https://www.example.com';</script>";
                         exit();
                 }
             }
