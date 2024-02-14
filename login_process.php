@@ -33,9 +33,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User found, verify password
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            // Password correct, perform redirection based on user's role or any other condition
-            header("Location: https://www.example.com"); // Redirect to the desired page
-            exit(); // Ensure that no further code is executed after redirection
+            // Password correct, perform redirection based on login parameter
+            if(isset($_GET['login'])) {
+                $login_dest = $_GET['login'];
+                switch ($login_dest) {
+                    case '1':
+                        header("Location: https://www.google.com");
+                        exit();
+                    case '2':
+                        header("Location: https://www.bing.com");
+                        exit();
+                    // Add more cases for additional destinations
+                    default:
+                        // Default to a generic page
+                        header("Location: https://www.example.com");
+                        exit();
+                }
+            }
         } else {
             // Password incorrect
             echo "Login failed. Invalid password.";
