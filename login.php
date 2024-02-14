@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password correct, set session variable
             $_SESSION['logged_in'] = true;
             // Redirect to the second file
-            header("Location: second_file.php");
+            header("Location: otherone.php");
             exit();
         } else {
             // Password incorrect
