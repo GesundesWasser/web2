@@ -47,7 +47,7 @@
 
         input[type="submit"],
         .signup-button {
-            width: calc(100% - 20px); /* Adjusted button width */
+            width: 100%; /* Make the button full width */
             background-color: #4CAF50; /* Green color */
             color: #fff;
             cursor: pointer;
@@ -114,7 +114,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Sign Up" class="signup-button">
             </form>
-            <p>Already have an account? <a href="login.php">Login</a></p>
+            <p style="margin-top: 10px;">Already have an account? <a href="login.php">Login</a></p>
         </div>
     </div>
 </body>
