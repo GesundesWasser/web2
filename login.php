@@ -43,7 +43,7 @@
         }
 
         input[type="submit"],
-        .button {
+        .login-button {
             width: calc(100% - 20px); /* Adjusted button width */
             background-color: #fff;
             color: #222;
@@ -52,7 +52,7 @@
         }
 
         input[type="submit"]:hover,
-        .button:hover {
+        .login-button:hover {
             background-color: #eee;
         }
 
@@ -60,6 +60,17 @@
             display: block;
             margin-top: 10px;
             text-decoration: none;
+            color: #fff;
+        }
+
+        .signup-button {
+            background-color: #fff;
+            color: #222;
+            font-size: 12px;
+        }
+
+        .signup-button:hover {
+            background-color: #eee;
         }
     </style>
 </head>
@@ -115,9 +126,9 @@
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Login" class="button">
+                <input type="submit" value="Login" class="login-button">
             </form>
-            <a href="signup.php" class="signup-link button" style="background-color: #fff; color: #222; font-size: 12px;">Don't Have An Account? Signup</a>
+            <a href="signup.php" class="signup-link button signup-button">Don't Have An Account? Signup</a>
         </div>
     </div>
 </body>
