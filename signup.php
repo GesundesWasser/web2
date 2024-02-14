@@ -33,8 +33,7 @@
         }
 
         input[type="text"],
-        input[type="password"],
-        .button {
+        input[type="password"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
@@ -45,7 +44,22 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        input[type="submit"],
+        input[type="submit"] {
+            width: calc(100% - 20px);
+            background-color: #4CAF50; /* Green color */
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            border: none; /* Remove border */
+            border-radius: 3px; /* Apply border radius */
+            padding: 10px; /* Apply padding */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+
         .signup-button {
             width: calc(100% - 20px); /* Adjusted button width */
             background-color: #4CAF50; /* Green color */
@@ -59,10 +73,10 @@
             margin-top: 10px; /* Adjusted margin-top */
         }
 
-        input[type="submit"]:hover,
         .signup-button:hover {
             background-color: #45a049; /* Darker green color on hover */
         }
+
     </style>
 </head>
 <body>
@@ -113,7 +127,7 @@
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Sign Up" class="signup-button">
+                <input type="submit" value="Sign Up">
             </form>
             <p>Already have an account? <a href="login.php">Login</a></p>
         </div>
