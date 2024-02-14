@@ -33,8 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User found, verify password
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            // Password correct, login successful
-            echo "Login successful!";
+            // Password correct, perform redirection based on user's role or any other condition
+            header("Location: https://www.example.com"); // Redirect to the desired page
+            exit(); // Ensure that no further code is executed after redirection
         } else {
             // Password incorrect
             echo "Login failed. Invalid password.";
