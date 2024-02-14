@@ -1,10 +1,10 @@
 <?php
 // Database connection
 $servername = "172.17.0.4";
-$username = "wwago"; // Your MySQL username
-$password = "bodenkapsel"; // Your MySQL password
-$database = "database"; // Your database name
-$port = "3306"; // Your MySQL port
+$username = "wwago"; // MySQL username
+$password = "bodenkapsel"; // MySQL password
+$database = "database"; // Database name
+$port = "3306"; // MySQL port
 $conn = new mysqli($servername, $username, $password, $database, $port);
 
 // Check connection
@@ -37,16 +37,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if(isset($_GET['login'])) {
                 $login_dest = $_GET['login'];
                 switch ($login_dest) {
-                    case '1':
-                        header("Location: https://www.google.com");
+                    case 'shop':
+                        header("Location: shop");
                         exit();
-                    case '2':
-                        header("Location: https://www.bing.com");
+                    case 'stellar':
+                        header("Location: stellar");
                         exit();
                     // Add more cases for additional destinations
                     default:
                         // Default to a generic page
-                        header("Location: https://www.example.com");
+                        echo "Error while Launching Session Please Reload The Page!";
                         exit();
                 }
             }
