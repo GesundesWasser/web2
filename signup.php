@@ -57,6 +57,9 @@
             border-radius: 3px; /* Apply border radius */
             padding: 10px; /* Apply padding */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
+            text-decoration: none; /* Remove default underline */
+            display: inline-block; /* Ensure the element behaves like a block-level element */
+            text-align: center; /* Center the text horizontally */
         }
 
         input[type="submit"]:hover,
