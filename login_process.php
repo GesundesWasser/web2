@@ -25,16 +25,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $password);
 
     // Query
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM users WHERE username='$username'";
     $result = $conn->query($sql);
 
     // Check if user exists
     if ($result->num_rows == 1) {
-        // User found, login successful
-        echo "Login successful!";
+        // User found, verify password
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            // Password correct, login successful
+            echo "Login successful!";
+        } else {
+            // Password incorrect
+            echo "Login failed. Invalid password.";
+        }
     } else {
-        // Login failed
-        echo "Login failed. Invalid username or password.";
+        // User not found
+        echo "Login failed. User not found.";
     }
 }
 
