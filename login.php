@@ -42,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if(isset($_GET['login'])) {
                 $login_dest = $_GET['login'];
                 switch ($login_dest) {
-                    case '1':
+                    case 'stellar':
                         header("Location: one.php");
                         exit();
-                    case '2':
+                    case 'shop':
                         header("Location: otherone.php");
                         exit();
                     // Add more cases for additional destinations
@@ -78,111 +78,47 @@ $conn->close();
     <style>
         body {
             background-color: #222;
+            font-family: Arial, sans-serif;
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            padding: 0;
         }
 
-        header, main, footer {
+        form {
+            background-color: #333;
             padding: 20px;
-            box-sizing: border-box;
-            max-width: 800px; /* Set your desired max-width */
-            margin: 0; /* Set margin to 0 for left alignment */
+            border-radius: 5px;
         }
 
-        header img {
-            width: 125px;
-            height: 38px;
-            margin-right: 15px;
-            vertical-align: middle; /* Align the image vertically */
+        label {
+            display: block;
+            margin-bottom: 10px;
         }
 
-        header h1 {
-            margin: 0;
-            display: inline-block;
-            vertical-align: middle; /* Align the text vertically */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 3px;
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 15px;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        button {
-            background-color: #555;
-            color: #fff;
+        input[type="submit"] {
+            width: 100%;
             padding: 10px;
             border: none;
+            border-radius: 3px;
+            background-color: #4CAF50;
+            color: white;
             cursor: pointer;
-            border-radius: 5px;
         }
 
-        input[type="text"], input[type="password"], textarea {
-            background-color: #333;
-            color: #fff;
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
-            width: 150px;
-        }
-
-        main img {
-            max-width: 80px;
-            height: auto;
-            margin-right: 15px;
-            vertical-align: middle; /* Align the image vertically */
-        }
-
-        main h2 {
-            margin: 0;
-            display: inline-block;
-            vertical-align: middle; /* Align the text vertically */
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        section img {
-            max-width: 100%; /* Ensure the image doesn't exceed its original width */
-            height: auto; /* Maintain the aspect ratio */
-            margin-right: 15px;
-            margin-bottom: 15px; /* Add bottom margin to separate image and text */
-            vertical-align: middle; /* Align the image vertically */
-        }
-
-        body::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background-color: #fff;
-            border-radius: 6px;
-        }
-
-        body::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
-
-        body::-webkit-scrollbar-track-piece {
-            background-color: transparent;
-        }
-        img {
-            width: 50px;
-            height: 50px;
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
