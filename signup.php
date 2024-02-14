@@ -4,7 +4,7 @@
     <title>Sign Up</title>
     <style>
         body {
-            background-image: url('background_image.jpg'); /* Replace 'background_image.jpg' with the path to your image */
+            background-image: url('img/login.png'); /* Replace 'background_image.jpg' with the path to your image */
             background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
