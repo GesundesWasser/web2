@@ -1,30 +1,17 @@
-<?php
-// Start session
-session_start();
-
-// Check if the user is logged in
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // If not logged in, redirect to the login page
-    header("Location: login.php");
-    exit();
-}
-
-// If logged in, Display The Content Of The Site!
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kapselordnung</title>
+    <title>Stellar</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="img/favicon.ico" type="img/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="img/x-icon">    
     <style>
         body {
             background-color: #222;
             color: #fff;
-            margin: 0;
             font-family: 'Arial', sans-serif;
+            margin: 0;
             padding: 0;
         }
 
@@ -36,8 +23,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         }
 
         header img {
-            width: 125px;
-            height: 38px;
+            max-width: 80px;
+            height: auto;
             margin-right: 15px;
             vertical-align: middle; /* Align the image vertically */
         }
@@ -108,6 +95,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             vertical-align: middle; /* Align the image vertically */
         }
 
+        section#section3 img {
+            display: block; /* Set the image to block-level to make it appear above the text */
+            margin-bottom: 10px; /* Add some space between the image and the text */
+        }
         body::-webkit-scrollbar {
             width: 8px;
         }
@@ -124,21 +115,65 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         body::-webkit-scrollbar-track-piece {
             background-color: transparent;
         }
-        img {
-            width: 50px;
-            height: 50px;
-        }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9235748631542962" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <header>
-    <a href="site">
-    <img src="img/wwagoinc.png" alt="WWAGO Inc.">
-    </a>
-    </header>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    <main>
+session_start();
+
+// Replace with your actual MySQL database details
+$host = "localhost";
+$username = "web";
+$password = "bodenkapsel";
+$database = "users";
+
+$mysqli = new mysqli($host, $username, $password, $database);
+
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $enteredPasscode = $_POST["passcode"];
+
+    // Query the database to get the username and image associated with the entered passcode
+    $query = "SELECT username, image FROM users WHERE passcode = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("s", $enteredPasscode);
+    $stmt->execute();
+    $stmt->bind_result($username, $userImage);
+    
+    if ($stmt->fetch()) {
+        // Store the user in the session
+        $_SESSION['user'] = $username;
+    } else {
+        // Handle the case where an Invalid Password is Detected
+        header("Location: stellarlogin");
+        exit();
+    }
+
+    $stmt->close();
+} else {
+    // Handle the case where the form is not submitted
+    header("Location: stellarlogin");
+    exit();
+}
+?>
+
+<header>
+    <!-- Wrapped the img tag with an a tag to make it a link to Google -->
+    <a href="site">
+    <img src="img/<?php echo isset($userImage) ? $userImage : 'default-image.png'; ?>" alt="User Icon">
+</a>
+    <h1><?php echo isset($_SESSION['user']) ? "WWAGO, " . $_SESSION['user'] : "USERNAME"; ?></h1>
+</header>
+
+<main>
         <section id="section1">
             <h2>Oh Nein, Der Tower Brennt!</h2>
             <p>WENN DER DIE SIRENE HÖRT, FÜHLT ER SICH SEHR GESTÖRT!</p>
@@ -165,9 +200,5 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 </main>
 
 <footer>
-<p>&copy; WWAGO Studios</p>
-<p>&copy; Jakobsoft Inc.</p>
+    <p>&copy; WWAGO Inc.</p>
 </footer>
-
-</body>
-</html>
