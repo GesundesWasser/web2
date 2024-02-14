@@ -48,7 +48,7 @@
             background-color: #fff;
             color: #222;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px; /* Smaller font size */
         }
 
         input[type="submit"]:hover,
