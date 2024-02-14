@@ -4,7 +4,8 @@
     <title>Login</title>
     <style>
         body {
-            background-color: #222;
+            background-image: url('img/bodenkapsel.png'); /* Replace 'background_image.jpg' with the path to your image */
+            background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
             display: flex;
@@ -19,7 +20,7 @@
         }
 
         .form-container {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.7); /* Add transparency to the background color */
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
@@ -40,6 +41,7 @@
             border: none;
             border-radius: 3px;
             color: #fff;
+            background-color: rgba(255, 255, 255, 0.1); /* Add transparency to the background color */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
