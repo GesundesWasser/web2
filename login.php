@@ -1,4 +1,7 @@
 <?php
+// Start session
+session_start();
+
 // Database connection
 $servername = "172.17.0.4";
 $username = "wwago"; // MySQL username
@@ -33,23 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User found, verify password
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            // Password correct, perform redirection based on login parameter
-            if(isset($_GET['login'])) {
-                $login_dest = $_GET['login'];
-                switch ($login_dest) {
-                    case 'shop':
-                        header("Location: shop");
-                        exit();
-                    case 'stellar':
-                        header("Location: stellar");
-                        exit();
-                    // Add more cases for additional destinations
-                    default:
-                        // Default to a generic page
-                        echo "Error while Launching Session Please Reload The Page!";
-                        exit();
-                }
-            }
+            // Password correct, set session variable
+            $_SESSION['logged_in'] = true;
+            // Redirect to the second file
+            header("Location: second_file.php");
+            exit();
         } else {
             // Password incorrect
             echo "Login failed. Invalid password.";
