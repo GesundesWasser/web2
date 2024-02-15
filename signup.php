@@ -24,7 +24,7 @@
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
-            width: 300px; /* Adjusted width to match signup form */
+            width: 300px;
             margin: auto; /* Center the form */
         }
 
@@ -34,7 +34,8 @@
         }
 
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        .button {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
@@ -56,6 +57,9 @@
             border-radius: 3px; /* Apply border radius */
             padding: 10px; /* Apply padding */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
+            text-decoration: none; /* Remove default underline */
+            display: inline-block; /* Ensure the element behaves like a block-level element */
+            text-align: center; /* Center the text horizontally */
         }
 
         input[type="submit"]:hover,
