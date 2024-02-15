@@ -1,3 +1,41 @@
+<?php
+            // Database connection
+            $servername = "172.17.0.4";
+            $username = "wwago"; // MySQL username
+            $password = "bodenkapsel"; // MySQL password
+            $database = "database"; // Database name
+            $port = "3306"; // MySQL port
+            $conn = new mysqli($servername, $username, $password, $database, $port);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Check if form is submitted
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Form data
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                // SQL injection prevention
+                $username = stripslashes($username);
+                $password = stripslashes($password);
+                $username = mysqli_real_escape_string($conn, $username);
+                $password = mysqli_real_escape_string($conn, $password);
+
+                // Hash password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                // Insert user into database
+                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
+                if ($conn->query($sql) === TRUE) {
+                    echo "Account created successfully!";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
+            ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,56 +130,18 @@
 </head>
 <body>
     <div class="container">
-        <h2>Account Erstellen</h2>
-        <p>Bitte Gib Deine Informationen Ein Um Einen WWAGO® Account Zu Erstellen!</p>
+        <h2>Login</h2>
+        <p>Bitte Gib Deine Loginmationen Für Deiene WWAGO® Account Ein!</p>
         <div class="form-container">
-        <?php
-            // Database connection
-            $servername = "172.17.0.4";
-            $username = "wwago"; // MySQL username
-            $password = "bodenkapsel"; // MySQL password
-            $database = "database"; // Database name
-            $port = "3306"; // MySQL port
-            $conn = new mysqli($servername, $username, $password, $database, $port);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            // Check if form is submitted
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Form data
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-
-                // SQL injection prevention
-                $username = stripslashes($username);
-                $password = stripslashes($password);
-                $username = mysqli_real_escape_string($conn, $username);
-                $password = mysqli_real_escape_string($conn, $password);
-
-                // Hash password
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                // Insert user into database
-                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
-                if ($conn->query($sql) === TRUE) {
-                    echo "Account created successfully!";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            ?>
             <form method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Account Erstellen!" class="login-button">
+                <input type="submit" value="Login!" class="login-button">
             </form>
-            <a href="login" class="signup-link">
-                <button class="signup-button">Already have an account? Login!</button>
+            <a href="signup" class="signup-link">
+                <button class="signup-button">Don't have an account? Sign Up</button>
             </a>
         </div>
     </div>
