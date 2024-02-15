@@ -140,7 +140,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login" class="login-button">
             </form>
-            <a href="signup.php" class="signup-link">
+            <a href="signup" class="signup-link">
                 <button class="signup-button">Don't Have An Account? Signup</button>
             </a>
         </div>

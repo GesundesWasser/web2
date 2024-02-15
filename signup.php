@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sign Up</title>
+    <title>Login</title>
     <style>
         body {
             background-image: url('img/login.png'); /* Replace 'background_image.jpg' with the path to your image */
@@ -24,7 +24,7 @@
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
-            width: 300px; /* Adjusted width to match login form */
+            width: 300px; /* Adjusted width to match signup form */
             margin: auto; /* Center the form */
         }
 
@@ -46,7 +46,6 @@
         }
 
         input[type="submit"],
-        .signup-button,
         .login-button {
             width: calc(100% - 20px); /* Adjusted button width */
             background-color: #4CAF50; /* Green color */
@@ -57,13 +56,9 @@
             border-radius: 3px; /* Apply border radius */
             padding: 10px; /* Apply padding */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
-            text-decoration: none; /* Remove default underline */
-            display: inline-block; /* Ensure the element behaves like a block-level element */
-            text-align: center; /* Center the text horizontally */
         }
 
         input[type="submit"]:hover,
-        .signup-button:hover,
         .login-button:hover {
             background-color: #45a049; /* Darker green color on hover */
         }
@@ -75,11 +70,10 @@
             color: #fff;
         }
 
-        .signup-button,
-        .login-button {
+        .signup-button {
             background-color: #fff; /* White color */
             color: #222; /* Dark text color */
-            font-size: 14px;
+            font-size: 12px;
             display: inline-block;
             padding: 10px 20px; /* Apply padding */
             border: none; /* Remove border */
@@ -87,18 +81,17 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        .signup-button:hover,
-        .login-button:hover {
+        .signup-button:hover {
             background-color: #eee; /* Lighter background color on hover */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Sign Up</h2>
-        <p>Please fill out the following information to create an account.</p>
+        <h2>Account Erstellen</h2>
+        <p>Bitte Gib Deine informationen Ein Um Einen WWAGO® Account Zu Erstellen!</p>
         <div class="form-container">
-            <?php
+        <?php
             // Database connection
             $servername = "172.17.0.4";
             $username = "wwago"; // MySQL username
@@ -141,9 +134,11 @@
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Sign Up" class="signup-button">
+                <input type="submit" value="Account Erstellen!" class="login-button">
             </form>
-            <p>Already have an account? <a href="login.php" class="login-button">Login</a></p>
+            <a href="login" class="signup-link">
+                <button class="signup-button">Already have an account? Login!</button>
+            </a>
         </div>
     </div>
 </body>
