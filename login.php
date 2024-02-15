@@ -40,17 +40,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Redirect based on login query parameter
             if(isset($_GET['login'])) {
                 $login = $_GET['login'];
-                if($login == stellar) {
+                if($login == stellar) { // Handle The Stellar Query
                     header("Location: stellar");
                     exit();
-                } elseif($login == shop) {
+                } elseif($login == shop) { // Handle The Shop Query
                     header("Location: shop");
                     exit();
                 } else {
-                    // Default redirect
-                    header("Location: site");
+                    // Handle An Invalid Query
+                    header("Location: default-redirect.com");
                     exit();
                 }
+            } else {
+                // Handle No Query
+                header("Location: site");
+                exit();
             }
         } else {
             $login_error = "Login failed. Invalid username or password.";
@@ -163,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Account Erstellen!" class="login-button">
+                <input type="submit" value="Login!" class="login-button">
             </form>
             <a href="signup" class="signup-link">
                 <button class="signup-button">Don't have an account? Sign Up</button>

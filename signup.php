@@ -73,7 +73,7 @@
         .signup-button {
             background-color: #fff; /* White color */
             color: #222; /* Dark text color */
-            font-size: 12px;
+            font-size: 14px;
             display: inline-block;
             padding: 10px 20px; /* Apply padding */
             border: none; /* Remove border */
