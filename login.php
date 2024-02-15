@@ -167,9 +167,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Login">
+                <input type="submit" value="Account Erstellen!" class="login-button">
             </form>
-            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+            <a href="login" class="signup-link">
+                <button class="signup-button">Don't have an account? Sign Up</button>
+            </a>
         </div>
     </div>
 </body>
