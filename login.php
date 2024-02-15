@@ -95,65 +95,72 @@
         <h2>Login</h2>
         <p>Please enter your credentials to log in.</p>
         <div class="form-container">
-            <?php
-            // Database connection
-            $servername = "172.17.0.4";
-            $username = "wwago"; // MySQL username
-            $password = "bodenkapsel"; // MySQL password
-            $database = "database"; // Database name
-            $port = "3306"; // MySQL port
-            $conn = new mysqli($servername, $username, $password, $database, $port);
+        <?php
+// Start session to use session variables
+session_start();
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+// Database connection
+$servername = "172.17.0.4";
+$username = "wwago"; // MySQL username
+$password = "bodenkapsel"; // MySQL password
+$database = "database"; // Database name
+$port = "3306"; // MySQL port
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
-            // Check if form is submitted
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Form data
-                $username = $_POST['username'];
-                $password = $_POST['password'];
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-                // SQL injection prevention
-                $username = stripslashes($username);
-                $password = stripslashes($password);
-                $username = mysqli_real_escape_string($conn, $username);
-                $password = mysqli_real_escape_string($conn, $password);
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Form data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-                // Query user from database
-                $sql = "SELECT * FROM users WHERE username='$username'";
-                $result = $conn->query($sql);
+    // SQL injection prevention
+    $username = stripslashes($username);
+    $password = stripslashes($password);
+    $username = mysqli_real_escape_string($conn, $username);
+    $password = mysqli_real_escape_string($conn, $password);
 
-                if ($result->num_rows == 1) {
-                    $row = $result->fetch_assoc();
-                    if (password_verify($password, $row['password'])) {
-                        if(isset($_GET['login'])) {
-                            $login = $_GET['login'];
-                            if($login == 1) {
-                                header("Location: google.com");
-                                exit();
-                            } elseif($login == 2) {
-                                header("Location: bing.com");
-                                exit();
-                            } else {
-                                // Default redirect
-                                header("Location: site");
-                                exit();
-                            }
-                        } else {
-                            // Default redirect if no query parameter provided
-                            header("Location: default-redirect.com");
-                            exit();
-                        }
-                    } else {
-                        echo "Login failed. Invalid username or password.";
-                    }
+    // Query user from database
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            // Set session variable for logged-in user
+            $_SESSION['username'] = $username;
+
+            // Redirect based on login query parameter
+            if(isset($_GET['login'])) {
+                $login = $_GET['login'];
+                if($login == 1) {
+                    header("Location: google.com");
+                    exit();
+                } elseif($login == 2) {
+                    header("Location: bing.com");
+                    exit();
                 } else {
-                    echo "Login failed. Invalid username or password.";
+                    // Default redirect
+                    header("Location: default-redirect.com");
+                    exit();
                 }
+            } else {
+                // Default redirect if no query parameter provided
+                header("Location: default-redirect.com");
+                exit();
             }
-            ?>
+        } else {
+            $login_error = "Login failed. Invalid username or password.";
+        }
+    } else {
+        $login_error = "Login failed. Invalid username or password.";
+    }
+}
+?>
             <form method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>
