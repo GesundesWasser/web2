@@ -124,13 +124,16 @@
                 if ($result->num_rows == 1) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['password'])) {
-                        header("Location: stellar");
+                        // Redirect to stellar page
+                        header("Location: stellar.php"); 
+                        exit; // En
                     } else {
                         echo "Login failed. Invalid username or password.";
                     }
                 } else {
                     echo "Login failed. Invalid username or password.";
                 }
+                
             }
             ?>
             <form method="post">
