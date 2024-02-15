@@ -24,7 +24,7 @@
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
-            width: 300px; /* Adjusted width to match signup form */
+            width: 300px;
             margin: auto; /* Center the form */
         }
 
@@ -34,7 +34,8 @@
         }
 
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        .button {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 10px;
@@ -56,6 +57,9 @@
             border-radius: 3px; /* Apply border radius */
             padding: 10px; /* Apply padding */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
+            text-decoration: none; /* Remove default underline */
+            display: inline-block; /* Ensure the element behaves like a block-level element */
+            text-align: center; /* Center the text horizontally */
         }
 
         input[type="submit"]:hover,
@@ -73,7 +77,7 @@
         .signup-button {
             background-color: #fff; /* White color */
             color: #222; /* Dark text color */
-            font-size: 12px;
+            font-size: 14px;
             display: inline-block;
             padding: 10px 20px; /* Apply padding */
             border: none; /* Remove border */
@@ -124,16 +128,30 @@
                 if ($result->num_rows == 1) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['password'])) {
-                        // Redirect to stellar page
-                        header("Location: stellar.php"); 
-                        exit; // En
+                        if(isset($_GET['login'])) {
+                            $login = $_GET['login'];
+                            if($login == 1) {
+                                header("Location: google.com");
+                                exit();
+                            } elseif($login == 2) {
+                                header("Location: bing.com");
+                                exit();
+                            } else {
+                                // Default redirect
+                                header("Location: site");
+                                exit();
+                            }
+                        } else {
+                            // Default redirect if no query parameter provided
+                            header("Location: default-redirect.com");
+                            exit();
+                        }
                     } else {
                         echo "Login failed. Invalid username or password.";
                     }
                 } else {
                     echo "Login failed. Invalid username or password.";
                 }
-                
             }
             ?>
             <form method="post">
@@ -143,9 +161,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login" class="login-button">
             </form>
-            <a href="signup" class="signup-link">
-                <button class="signup-button">Don't Have An Account? Signup</button>
-            </a>
+            <p>Don't have an account? <a href="signup.php" class="signup-button">Sign Up</a></p>
         </div>
     </div>
 </body>
