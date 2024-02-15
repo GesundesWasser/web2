@@ -40,21 +40,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Redirect based on login query parameter
             if(isset($_GET['login'])) {
                 $login = $_GET['login'];
-                if($login == 1) {
-                    header("Location: google.com");
+                if($login == stellar) {
+                    header("Location: stellar");
                     exit();
-                } elseif($login == 2) {
-                    header("Location: bing.com");
+                } elseif($login == shop) {
+                    header("Location: shop");
                     exit();
                 } else {
                     // Default redirect
-                    header("Location: default-redirect.com");
+                    header("Location: site");
                     exit();
                 }
-            } else {
-                // Default redirect if no query parameter provided
-                header("Location: default-redirect.com");
-                exit();
             }
         } else {
             $login_error = "Login failed. Invalid username or password.";
@@ -159,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <h2>Login</h2>
-        <p>Please enter your credentials to log in.</p>
+        <p>Bitte Gib Deine Informationen Für Deiene WWAGO® Account Ein!</p>
         <div class="form-container">
             <?php if(isset($login_error)) { echo "<p>$login_error</p>"; } ?>
             <form method="post">
@@ -169,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Account Erstellen!" class="login-button">
             </form>
-            <a href="login" class="signup-link">
+            <a href="signup" class="signup-link">
                 <button class="signup-button">Don't have an account? Sign Up</button>
             </a>
         </div>

@@ -89,7 +89,7 @@
 <body>
     <div class="container">
         <h2>Account Erstellen</h2>
-        <p>Bitte Gib Deine informationen Ein Um Einen WWAGO® Account Zu Erstellen!</p>
+        <p>Bitte Gib Deine Informationen Ein Um Einen WWAGO® Account Zu Erstellen!</p>
         <div class="form-container">
         <?php
             // Database connection
