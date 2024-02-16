@@ -57,10 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         } else {
-            $login_error = "Login failed. Invalid username or password.";
+            $login_error = "Invalid username or password.";
         }
     } else {
-        $login_error = "Login failed. Invalid username or password.";
+        $login_error = "Invalid username or password.";
     }
 }
 ?>
