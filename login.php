@@ -24,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // SQL injection prevention
     $username = stripslashes($username);
     $password = stripslashes($password);
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
+    $username = $conn->real_escape_string($username);
+    $password = $conn->real_escape_string($password);
 
     // Query user from database
     $sql = "SELECT * FROM users WHERE username='$username'";
@@ -40,10 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Redirect based on login query parameter
             if(isset($_GET['login'])) {
                 $login = $_GET['login'];
-                if($login == stellar) { // Handle The Stellar Query
+                if($login == 'stellar') { // Handle The Stellar Query
                     header("Location: stellar");
                     exit();
-                } elseif($login == shop) { // Handle The Shop Query
+                } elseif($login == 'shop') { // Handle The Shop Query
                     header("Location: shop");
                     exit();
                 } else {
