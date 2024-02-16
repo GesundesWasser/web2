@@ -30,7 +30,7 @@
                 // Insert user into database
                 $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
                 if ($conn->query($sql) === TRUE) {
-                    $login_error = "Account created successfully!";
+                    $account_created = "Account created successfully!";
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
