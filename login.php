@@ -159,9 +159,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <h2>Login</h2>
-        <p>Bitte Gib Deine Informationen Für Deiene WWAGO® Account Ein!</p>
+        <p>Bitte Gib Deine Loginmationen Für Deiene WWAGO® Account Ein!</p>
         <div class="form-container">
-            <?php if(isset($login_error)) { echo "<p>$login_error</p>"; } ?>
+        <?php if(isset($login_error)) { echo "<p>$login_error</p>"; } ?>
             <form method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>

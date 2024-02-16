@@ -140,7 +140,7 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login!" class="login-button">
             </form>
-            <a href="signup" class="signup-link">
+            <a href="login" class="signup-link">
                 <button class="signup-button">Don't have an account? Sign Up</button>
             </a>
         </div>
