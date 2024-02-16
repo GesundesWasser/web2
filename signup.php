@@ -1,41 +1,41 @@
 <?php
-// Database connection
-$servername = "172.17.0.4";
-$username = "wwago"; // MySQL username
-$password = "bodenkapsel"; // MySQL password
-$database = "database"; // Database name
-$port = "3306"; // MySQL port
-$conn = new mysqli($servername, $username, $password, $database, $port);
+            // Database connection
+            $servername = "172.17.0.4";
+            $username = "wwago"; // MySQL username
+            $password = "bodenkapsel"; // MySQL password
+            $database = "database"; // Database name
+            $port = "3306"; // MySQL port
+            $conn = new mysqli($servername, $username, $password, $database, $port);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Form data
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+            // Check if form is submitted
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Form data
+                $username = $_POST['username'];
+                $password = $_POST['password'];
 
-    // SQL injection prevention
-    $username = stripslashes($username);
-    $password = stripslashes($password);
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
+                // SQL injection prevention
+                $username = stripslashes($username);
+                $password = stripslashes($password);
+                $username = mysqli_real_escape_string($conn, $username);
+                $password = mysqli_real_escape_string($conn, $password);
 
-    // Hash password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                // Hash password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert user into database
-    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
-    if ($conn->query($sql) === TRUE) {
-        echo "Account created successfully!<br>"; // Moved echo statement here
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-?>
+                // Insert user into database
+                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
+                if ($conn->query($sql) === TRUE) {
+                    $login_error = "Account created successfully!";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
+            ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,6 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Login</h2>
         <p>Bitte Gib Deine Loginmationen Für Deiene WWAGO® Account Ein!</p>
         <div class="form-container">
+        <?php if(isset($account_created)) { echo "<p>$account_created</p>"; } ?>
             <form method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>
