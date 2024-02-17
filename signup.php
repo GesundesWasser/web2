@@ -39,7 +39,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Vergammelkapselordnung</title>
     <style>
         body {
             background-image: url('img/login.png'); /* Replace 'background_image.jpg' with the path to your image */
