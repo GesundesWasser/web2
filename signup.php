@@ -1,41 +1,44 @@
 <?php
-            // Database connection
-            $servername = "mariadb-container";
-            $username = "website"; // MySQL username
-            $password = "b0d3nk4ps3l_123!"; // MySQL password
-            $database = "website"; // Database name
-            $port = "3306"; // MySQL port
-            $conn = new mysqli($servername, $username, $password, $database, $port);
+// Ensure no whitespace or output before this line
+session_start();
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+// Database connection
+$servername = "mariadb-container";
+$username = "website"; // MySQL username
+$password = "b0d3nk4ps3l_123!"; // MySQL password
+$database = "website"; // Database name
+$port = "3306"; // MySQL port
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
-            // Check if form is submitted
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Form data
-                $username = $_POST['username'];
-                $password = $_POST['password'];
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-                // SQL injection prevention
-                $username = stripslashes($username);
-                $password = stripslashes($password);
-                $username = mysqli_real_escape_string($conn, $username);
-                $password = mysqli_real_escape_string($conn, $password);
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Form data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-                // Hash password
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // SQL injection prevention
+    $username = stripslashes($username);
+    $password = stripslashes($password);
+    $username = mysqli_real_escape_string($conn, $username);
+    $password = mysqli_real_escape_string($conn, $password);
 
-                // Insert user into database
-                $sql = "INSERT INTO wwago_accounts (username, password) VALUES ('$username', '$hashed_password')";
-                if ($conn->query($sql) === TRUE) {
-                    $account_created = "Account created successfully!";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            ?>
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert user into database
+    $sql = "INSERT INTO wwago_accounts (username, password) VALUES ('$username', '$hashed_password')";
+    if ($conn->query($sql) === TRUE) {
+        $account_created = "Account created successfully!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -148,45 +151,3 @@
     </div>
 </body>
 </html>
-
-<?php
-// Ensure no whitespace or output before this line
-session_start();
-
-// Database connection
-$servername = "mariadb-container"
-$username = "website"; // MySQL username
-$password = "b0d3nk4ps3l_123!"; // MySQL password
-$database = "website"; // Database name
-$port = "3306"; // MySQL port
-$conn = new mysqli($servername, $username, $password, $database, $port);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Form data
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-                // SQL injection prevention
-                $username = stripslashes($username);
-                $password = stripslashes($password);
-                $username = mysqli_real_escape_string($conn, $username);
-                $password = mysqli_real_escape_string($conn, $password);
-
-                // Hash password
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                // Insert user into database
-                $sql = "INSERT INTO wwago_accounts (username, password) VALUES ('$username', '$hashed_password')";
-                if ($conn->query($sql) === TRUE) {
-                    $account_created = "Account created successfully!";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            ?>
