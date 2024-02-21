@@ -1,22 +1,27 @@
 <?php
 // Ensure no whitespace or output before this line
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Database connection
-$servername = "172.17.0.2";
+$servername = "mariadb-container";
 $username = "website"; // MySQL username
 $password = "b0d3nk4ps3l_123!"; // MySQL password
 $database = "website"; // Database name
 $port = "3306"; // MySQL port
-$conn = new mysqli($servername, $username, $password, $database, $port);
 
-// Check connection
+// Specify the character set
+$charset = "utf8mb4";
+
+// Create a new MySQLi connection with character set
+$conn = new mysqli($servername, $username, $password, $database, $port);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Set the character set for the connection
+if (!$conn->set_charset($charset)) {
+    die("Error setting charset: " . $conn->error);
+}
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Form data
