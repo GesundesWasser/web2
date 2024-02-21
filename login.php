@@ -3,10 +3,10 @@
 session_start();
 
 // Database connection
-$servername = "172.17.0.4";
-$username = "wwago"; // MySQL username
-$password = "bodenkapsel"; // MySQL password
-$database = "database"; // Database name
+$servername = "mariadb-container"
+$username = "website"; // MySQL username
+$password = "b0d3nk4ps3l_123!"; // MySQL password
+$database = "website"; // Database name
 $port = "3306"; // MySQL port
 $conn = new mysqli($servername, $username, $password, $database, $port);
 
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $conn->real_escape_string($password);
 
     // Query user from database
-    $sql = "SELECT * FROM users WHERE username='$username'";
+    $sql = "SELECT * FROM wwago_accounts WHERE username='$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {

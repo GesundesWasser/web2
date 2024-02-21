@@ -1,9 +1,9 @@
 <?php
             // Database connection
-            $servername = "172.17.0.4";
-            $username = "wwago"; // MySQL username
-            $password = "bodenkapsel"; // MySQL password
-            $database = "database"; // Database name
+            $servername = "mariadb-container";
+            $username = "website"; // MySQL username
+            $password = "b0d3nk4ps3l_123!"; // MySQL password
+            $database = "website"; // Database name
             $port = "3306"; // MySQL port
             $conn = new mysqli($servername, $username, $password, $database, $port);
 
@@ -28,7 +28,7 @@
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Insert user into database
-                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
+                $sql = "INSERT INTO wwago_accounts (username, password) VALUES ('$username', '$hashed_password')";
                 if ($conn->query($sql) === TRUE) {
                     $account_created = "Account created successfully!";
                 } else {
@@ -131,7 +131,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <p>Bitte Gib Deine Loginmationen Für Deiene WWAGO® Account Ein!</p>
+        <p>Bitte Gib Deine Account Für Deiene WWAGO® Account Ein!</p>
         <div class="form-container">
         <?php if(isset($account_created)) { echo "<p>$account_created</p>"; } ?>
             <form method="post">
@@ -148,3 +148,45 @@
     </div>
 </body>
 </html>
+
+<?php
+// Ensure no whitespace or output before this line
+session_start();
+
+// Database connection
+$servername = "mariadb-container"
+$username = "website"; // MySQL username
+$password = "b0d3nk4ps3l_123!"; // MySQL password
+$database = "website"; // Database name
+$port = "3306"; // MySQL port
+$conn = new mysqli($servername, $username, $password, $database, $port);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Form data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+                // SQL injection prevention
+                $username = stripslashes($username);
+                $password = stripslashes($password);
+                $username = mysqli_real_escape_string($conn, $username);
+                $password = mysqli_real_escape_string($conn, $password);
+
+                // Hash password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                // Insert user into database
+                $sql = "INSERT INTO wwago_accounts (username, password) VALUES ('$username', '$hashed_password')";
+                if ($conn->query($sql) === TRUE) {
+                    $account_created = "Account created successfully!";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
+            ?>
