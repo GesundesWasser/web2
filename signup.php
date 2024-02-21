@@ -3,7 +3,7 @@
 session_start();
 
 // Database connection
-$servername = "mariadb-container";
+$servername = "172.17.0.2";
 $username = "website"; // MySQL username
 $password = "b0d3nk4ps3l_123!"; // MySQL password
 $database = "website"; // Database name
