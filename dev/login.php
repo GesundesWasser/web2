@@ -1,11 +1,15 @@
 <?php
+
+// Add Error Reporting
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-// Database connection parameters
-$servername = "localhost"; // Change this to your database server address if needed
-$username = "your_username"; // Change this to your database username
-$password = "your_password"; // Change this to your database password
+
+
+// Database Account Info
+$servername = "172.17.0.4"; // Change this to your database server address if needed
+$username = "web"; // Change this to your database username
+$password = "#K31N3-B0D3NK4PS3L!"; // Change this to your database password
 $database = "wwagodata"; // Change this to your database name
 
 // Create connection
