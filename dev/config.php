@@ -1,6 +1,6 @@
 <?php
 /* Database credentials */
-define('DB_SERVER', 'mysql');
+define('DB_SERVER', '172.17.0.4');
 define('DB_USERNAME', 'web');
 define('DB_PASSWORD', '#K31N3-B0D3NK4PS3L!');
 define('DB_NAME', 'wwagodata');
