@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Database connection parameters
 $servername = "localhost"; // Change this to your database server address if needed
 $username = "your_username"; // Change this to your database username
