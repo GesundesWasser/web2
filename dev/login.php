@@ -1,8 +1,8 @@
 <?php
 // Database connection parameters
-$servername = "172.17.0.4"; // Change this to your database server address if needed
-$username = "web"; // Change this to your database username
-$password = "#K31N3-B0D3NK4PS3L!"; // Change this to your database password
+$servername = "localhost"; // Change this to your database server address if needed
+$username = "your_username"; // Change this to your database username
+$password = "your_password"; // Change this to your database password
 $database = "wwagodata"; // Change this to your database name
 
 // Create connection
@@ -13,8 +13,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Check if form is submitted for login
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     // Get username and password from form
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -34,6 +34,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+// Check if form is submitted for registration
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
+    // Get username and password from form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // SQL query to insert user into database
+    $sql = "INSERT INTO accounts (username, password) VALUES ('$username', '$password')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "User registered successfully!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
 // Close connection
 $conn->close();
 ?>
@@ -43,7 +59,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login and Registration</title>
 </head>
 <body>
     <h2>Login</h2>
@@ -52,7 +68,16 @@ $conn->close();
         <input type="text" id="username" name="username"><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" name="login">
+    </form>
+
+    <h2>Register</h2>
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <label for="new_username">New Username:</label><br>
+        <input type="text" id="new_username" name="username"><br>
+        <label for="new_password">New Password:</label><br>
+        <input type="password" id="new_password" name="password"><br><br>
+        <input type="submit" value="Register" name="register">
     </form>
 </body>
 </html>
