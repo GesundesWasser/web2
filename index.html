@@ -116,6 +116,7 @@
             height: 50px;
         }
     </style>
+    <script src="cookie.js"></script>
 </head>
 <body>
 
@@ -126,6 +127,13 @@
     </header>
 
 <main>
+
+    <!-- Show the Cookie Popup -->
+    <div id="cookieConsent" style="display: none; background-color: rgba(0, 0, 0, 0.8); color: #fff; position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px; text-align: center; z-index: 9999;">
+        This website uses cookies to ensure you get the best experience on our website.
+        <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; margin-left: 20px;" onclick="acceptCookies()">Accept</button>
+    </div>
+
     <section id="section1">
         <img src="img/jakobsoft-logo.png" alt="Jakobsoft®">
         <h2>Jakobsoft</h2>
@@ -182,8 +190,6 @@
         <button type="button" disabled>Leider Gratgeperrt! (Gratsperre.virus)</button>
     </section>
 </main>
-
-<!--<button onclick="window.location.href='login?login=stellar'">Temporär Entsperrt!</button>-->
 
 <footer>
 <p>&copy; WWAGO Studios</p>
