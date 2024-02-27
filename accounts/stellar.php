@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,11 +127,11 @@
             height: 50px;
         }
     </style>
-    <script src="cookie.js"></script>
+<script src="cookie.js"></script>
 </head>
 <body>
 
-    <header>
+<header>
     <a href="site">
     <img src="img/wwagoinc.png" alt="WWAGO Inc.">
     </a>
@@ -139,75 +145,40 @@
         <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; margin-left: 20px;" onclick="acceptCookies()">Accept</button>
     </div>
 
-    <section id="section1">
-        <img src="img/jakobsoft-logo.png" alt="Jakobsoft®">
-        <h2>Jakobsoft</h2>
-        <p>Jakobsoft Software Provider</p>
-        <button onclick="window.location.href='jakobsoft'">Zur Jakobsoft Seite!</button>
-    </section>
+        <section id="section1">
+            <h2>Oh Nein, Der Tower Brennt!</h2>
+            <p>WENN DER DIE SIRENE HÖRT, FÜHLT ER SICH SEHR GESTÖRT!</p>
+            <button onclick="window.location.href='video/tower-fire.html'">Anzeigen</button>
+        </section>
 
-    <section id="section2">
-        <img src="img/wwago-studios.png" alt="WWAGO® Studios">
-        <h2>&nbsp;</h2>
-        <p>WWAGO® Studios Software Provider</p>
-        <button onclick="window.location.href='wwago-studios'">Zum WWAGO® Studio!</button>
-    </section>
+        <section id="section2">
+            <h2>Mystery Video</h2>
+            <p>ITS A MYSTERY!</p>
+            <button onclick="window.location.href='video/rickroll.html'">Anzeigen</button>
+        </section>
 
-    <section id="section3">
-        <img src="img/wwago.png" alt="WWAGO®">
-        <h2>WWAGO</h2>
-        <p>Der BESTE Sitz der WELT! (Made in China!)</p>
-        <button onclick="window.location.href='wwago'">WWAGO Kaufen</button>
-    </section>
+        <section id="section3">
+            <h2>PLACEHOLDER</h2>
+            <p>TEXT</p>
+            <button disabled>Coming Soon...</button>
+        </section>
 
-    <section id="section4">
-        <img src="img/award-00.png" alt="Award-00">
-        <h2>Awards</h2>
-        <p>Die Liste ALLER Awards Und Deren Eigentum!</p>
-        <button onclick="window.location.href='awards'">Ok Du Zeigen</button>
-    </section>
-
-    <section id="section5">
-        <img src="img/book.png" alt="Buch">
-        <h2>Stadtordnung</h2>
-        <p>Die Regeln von MCDONELTS CITY (Die Schmeißt man ins Klo und sind NICHT zum Lesen da!)</p>
-        <button onclick="window.location.href='stadtordnung'">Anzeigen</button>
-    </section>
-
-    <section id="section6">
-        <img src="img/codename-kapsel-security.png" alt="WWAGO® Accounts!">
-        <h2>Codename Kapselsecurity</h2>
-        <p>Der Login Für Codename Kapselsecurity!</p>
-        <button type="button" disabled>Leider Gratgesperrt! (Gratsperre.virus)</button>
-    </section>
-
-    <section id="section7">
-        <img src="img/stellar.png" alt="Codename Stellar">
-        <h2>Codename Stellar</h2>
-        <p>Der Login Für Codename Stellar!</p>
-        <button type="button" disabled>Leider Gratgesperrt! (Gratsperre.virus)</button>
-    </section>
-
-    <section id="section8">
-        <img src="img/bed.png" alt="Bedwars">
-        <h2>Bedwars</h2>
-        <p>Die Besten Basen, Deathchamber, Müllchamber und die Ultimative Blockade!</p>
-        <button onclick="window.location.href='bedwars'">Anzeigen</button>
-    </section>
-
-    <section id="section9">
-        <img src="img/shop.png" alt="Shop">
-        <h2>Shop</h2>
-        <p>Der Beste Shop von WWAGO® Inc.</p>
-        <button type="button" disabled>Leider Gratgesperrt! (Gratsperre.virus)</button>
-    </section>
+        <section id="section4">
+            <h2>PLACEHOLDER</h2>
+            <p>TEXT</p>
+            <button disabled>Coming Soon...</button>
+        </section>
 
 </main>
 
 <footer>
-<p>&copy; WWAGO Studios</p>
+<p>&copy; WWAGO Studios</p>    
 <p>&copy; Jakobsoft Inc.</p>
 </footer>
 
-</body>
-</html>
+<?php 
+}else{
+     header("Location: index.php");
+     exit();
+}
+ ?>
