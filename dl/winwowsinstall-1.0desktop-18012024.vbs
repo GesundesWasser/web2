@@ -1,1 +1,0 @@
-x=msgbox("WINWOWS INSTALL FAILED" ,0, "Jakobsoft Installer")
