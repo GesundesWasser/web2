@@ -1,3 +1,9 @@
 [submodule "gratspiel.virus"]
 	path = gratspiel.virus
 	url = https://github.com/WWAGO-Inc/gratspiel.virus
+[submodule "timemachine"]
+	path = timemachine
+	url = https://github.com/WWAGO-Inc/timemachine
+[submodule "accounts"]
+	path = accounts
+	url = https://github.com/wwago-inc/accounts.git
