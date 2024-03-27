@@ -1,0 +1,3 @@
+[submodule "gratspiel.virus"]
+	path = gratspiel.virus
+	url = https://github.com/WWAGO-Inc/gratspiel.virus
