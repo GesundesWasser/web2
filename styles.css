@@ -50,16 +50,6 @@ section img {
     margin-bottom: 15px; 
 }
 
-section#section2 img {
-    width: 120px;
-    height: 80px;
-}
-
-section#section4 img {
-    width: 130px;
-    height: 65px;
-}
-
 body::-webkit-scrollbar {
     width: 8px;
 }
