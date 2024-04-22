@@ -1,0 +1,12 @@
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+.stellar {
+    display: flex;
+    align-items: center;
+}
+.stellar img {
+    margin-right: 10px;
+}

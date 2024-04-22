@@ -1,4 +1,4 @@
-<?php
+<!--?php
 // Initialize the session
 session_start();
  
@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: /accounts/login");
     exit;
 }
-?>
+?-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
 
     <header>
-        <h1>Hiya! <?php echo htmlspecialchars($_SESSION["username"]); ?>
+        <h1>Hiya! GRATENTSPERRE.VIRUS</h1>
     </header>
 
     <!-- Show the Cookie Popup -->
@@ -37,13 +37,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <section id="section1">
         <h2>Oh Nein, Der Tower Brennt!</h2>
         <p>WENN DER DIE SIRENE HÖRT, FÜHLT ER SICH SEHR GESTÖRT!</p>
-        <button onclick="window.location.href='video/tower-fire.html'">Anzeigen</button>
+        <button onclick="window.location.href='tower-fire.html'">Anzeigen</button>
     </section>
 
     <section id="section2">
-        <h2>VIDEO2</h2>
-        <p>WENN DER DIE SIRENE HÖRT, FÜHLT ER SICH SEHR GESTÖRT!</p>
-        <button onclick="window.location.href='video/tower-fire.html'">Anzeigen</button>
+        <h2>Ball Video</h2>
+        <p>So ein Ball Video oder so...</p>
+        <button onclick="window.location.href='stellar-ballvideo/'">Anzeigen</button>
     </section>
 
 </main>
