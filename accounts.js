@@ -19,7 +19,7 @@ async function fetchData(url, options) {
   
   // Function to verify token
   async function verifyToken(token) {
-    const url = "http://localhost:3000/auth/tokenlogin";
+    const url = "https://api.scamcraft.net/auth/tokenlogin";
     const options = {
       method: "POST",
       headers: {
@@ -38,7 +38,7 @@ async function fetchData(url, options) {
   
   // Function to get snake score
   async function getSnakeScore(token) {
-    const url = "http://localhost:3000/auth/getscore";
+    const url = "https://api.scamcraft.net/auth/getscore";
     const options = {
       method: "POST",
       headers: {
@@ -57,7 +57,7 @@ async function fetchData(url, options) {
   
   // Function to set snake score
   async function setSnakeScore(token, score) {
-    const url = "http://localhost:3000/auth/setscore";
+    const url = "https://api.scamcraft.net/auth/setscore";
     const options = {
       method: "POST",
       headers: {
