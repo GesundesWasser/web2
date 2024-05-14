@@ -1,4 +1,9 @@
-    // Function to set the cookie
+// ---------------------------
+// Main File of Cookies System
+// Copyright mcdonelts.city
+// ---------------------------
+
+// Function to set the cookie
     function setCookie(cookieName, cookieValue, expirationDays) {
         const d = new Date();
         d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));

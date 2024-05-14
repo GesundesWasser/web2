@@ -1,6 +1,6 @@
 // ---------------------------
 // Main File of Account System v2.0
-// Copyright WAWAWOGO Studios.
+// Copyright mcdonelts.city
 // ---------------------------
 
 // Reusable fetch function
