@@ -1,6 +1,6 @@
 // ---------------------------
 // Main File of Account System v2.0
-// Copyright WAWAWOGO Studios.
+// Copyright mcdonelts.city
 // ---------------------------
 
 // Reusable fetch function
@@ -105,7 +105,7 @@ async function fetchData(url, options) {
   
   try {
     if (overridepermitted === "true") {
-      localStorage.setItem("gameover", "false"); // Fix: Corrected the localStorage key
+      localStorage.setItem("gameover", "false");
       await setSnakeScore(token, newhighscore);
       console.log("Score successfully set!");
     } else {
