@@ -1,9 +1,9 @@
 [submodule "gratspiel.virus"]
 	path = gratspiel.virus
-	url = https://git.mcdonelts.city/WWAGO-Inc/gratspiel.virus.git
+	url = https://git.mcdonelts.city/Jakobsoft/gratspiel.virus.git
 [submodule "timemachine"]
 	path = timemachine
-	url = https://git.mcdonelts.city/WWAGO-Inc/timemachine.git
+	url = https://git.mcdonelts.city/Jakobsoft/timemachine.git
 [submodule "accounts"]
 	path = accounts
-	url = https://git.mcdonelts.city/WWAGO-Inc/accounts.git
+	url = https://git.mcdonelts.city/Jakobsoft/accounts.git
