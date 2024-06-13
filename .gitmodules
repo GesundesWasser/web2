@@ -7,3 +7,6 @@
 [submodule "accounts"]
 	path = accounts
 	url = https://git.mcdonelts.city/Jakobsoft/accounts.git
+[submodule "stellarvideo"]
+	path = stellarvideo
+	url = https://git.mcdonelts.city/Jakobsoft/stellarvideo.git
