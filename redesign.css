@@ -162,6 +162,12 @@ main h2 {
     display: inline-block;
     vertical-align: middle; /* Align the text vertically */
 }
+.stdordng {
+    display: block;
+    margin: 2em auto 0;
+    text-align: center; /* Optional, but may help in some contexts */
+    max-width: 100%; /* Ensures images don't overflow their container */
+}
 main img {
     max-width: 80px;
     margin-right: 15px;
