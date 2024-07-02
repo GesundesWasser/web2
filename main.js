@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Die Besten Basen, Deathchamber, Müllchamber und die Ultimative Blockade!',
             buttonText: 'Anzeigen',
             buttonLink: 'minecraft',
+            buttonAction: () => {
+                currentSections = SectionsMinecraft;
+                renderSections(currentSections);
+            },
             imgStyles: { width: '50px', height: '65px' },
             showButton: true,
         },
@@ -293,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.onload = function() {
     var currentYear = new Date().getFullYear();
     document.getElementById('copyright-year').innerText = currentYear;
-    document.getElementById('site-name-version').innerText = "Codename Kapselordnung v1.9 -> R07";
+    document.getElementById('site-name-version').innerText = "Codename Kapselordnung v1.9 -> R08";
   };
   
   // DOM Elements
