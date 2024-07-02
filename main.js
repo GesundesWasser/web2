@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.onload = function() {
     var currentYear = new Date().getFullYear();
     document.getElementById('copyright-year').innerText = currentYear;
-    document.getElementById('site-name-version').innerText = "Codename Kapselordnung Release v1.9 -> R0";
+    document.getElementById('site-name-version').innerText = "Codename Kapselordnung Release v1.9 -> R1";
   };
   
   // DOM Elements
