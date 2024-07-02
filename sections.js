@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonAction: () => {
                 currentSections = SectionsJakobsoft;
                 renderSections(currentSections);
-            }
+            },
+            imgStyles: { width: '50px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
@@ -19,14 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Die Zeitmaschine bringt dich zu jedem Codename Zurück!',
             buttonText: 'Du Geben Zeitmaschine!',
             buttonLink: 'timemachine/',
+            imgStyles: { width: '65px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/seatables.png',
             imgAlt: 'Seatables',
-            title: 'Seatables',
+            title: '',
             description: 'Die BESTEN Sitze der WELT! (Made in China!)',
             buttonText: 'Ich Kaufe!',
             buttonLink: 'seatables',
+            imgStyles: { width: '65px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/gratspiel-logo.png',
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Die Besten Vir- Ähhh Spiele!',
             buttonText: 'Zur Gratspiel Seite!',
             buttonLink: 'gratspiel.virus',
+            imgStyles: { width: '130px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/minecraft.png',
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Die Besten Basen, Deathchamber, Müllchamber und die Ultimative Blockade!',
             buttonText: 'Anzeigen',
             buttonLink: 'minecraft',
+            imgStyles: { width: '50px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/book.png',
@@ -51,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Die Regeln von MCDONELTS CITY (Die Schmeißt man ins Klo und sind NICHT zum Lesen da!)',
             buttonText: 'Anzeigen',
             buttonLink: 'stadtordnung/',
+            imgStyles: { width: '65px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/codename-kapsel-security.png',
@@ -59,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Der Login Für Codename Kapselsecurity!',
             buttonText: 'Zur Kapselsecurity Alpha!',
             buttonLink: 'accounts/',
+            imgStyles: { width: '65px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/scamcraft-logo.png',
@@ -67,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Der Beste Server Der Welt.',
             buttonText: 'Leider Gratgesperrt! (Gratsperre.virus)',
             disabled: true,
+            imgStyles: { width: '65px', height: '65px' },
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/stellar.png',
@@ -75,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Der Login Für Codename Stellarvideo!',
             buttonText: 'Zur Stellarvideo Alpha!',
             buttonLink: 'stellarvideo/',
+            imgStyles: { width: '65px', height: '65px' },
         },
     ];
-
     // Define the sections for Jakobsoft
     const SectionsJakobsoft = [
         {
@@ -104,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgElement = document.createElement('img');
             imgElement.src = section.imgSrc;
             imgElement.alt = section.imgAlt;
+            // Apply image styles from the section object
+            if (section.imgStyles) {
+                Object.assign(imgElement.style, section.imgStyles);
+            }
             sectionElement.appendChild(imgElement);
 
             if (section.title) {
