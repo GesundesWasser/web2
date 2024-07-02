@@ -32,8 +32,8 @@ main {
 }
 img {
     margin: 2em 0 0;
-    width: 180px;
-    height: 180px;
+    width: 525px;
+    height: 250px;
 }
 .navbar {
     height: 70px;
@@ -178,10 +178,6 @@ section img {
 section img {
     width: 75px;
     height: 75px;
-}
-section#section4 img {
-    width: 130px;
-    height: 65px;
 }
 body::-webkit-scrollbar {
     width: 8px;
