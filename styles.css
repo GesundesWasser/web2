@@ -13,7 +13,24 @@ ul {
 }
 a {
     color: currentColor;
+    color: #1E90FF;
     text-decoration: none;
+}
+a:hover {
+    color: #FF4500;
+    text-decoration: underline;
+}
+a:visited {
+    color: #6A5ACD; 
+}
+a:active {
+    color: #DC143C;
+}
+.navbar a {
+    color: #FFF;
+}
+.navbar a:hover {
+    color: #FFD700;
 }
 header {
     padding: 1em;
