@@ -2,7 +2,6 @@ window.onload = function() {
   var currentYear = new Date().getFullYear();
   document.getElementById('copyright-year').innerText = currentYear;
   document.getElementById('site-name-version').innerText = "Codename Kapselordnung v1.9 -> R01";
-  document.getElementById('site-title').innerText = "Kapselordnung";
 };
 
 // DOM Elements

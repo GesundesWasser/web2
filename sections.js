@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Define the sections for the main content
     const SectionsMain = [
         {
             imgSrc: 'https://download.scamcraft.net/img/jakobsoftlogo-ohne-schrift.png',
@@ -6,7 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Jakobsoft',
             description: 'Jakobsoft Software Provider',
             buttonText: 'Zur Jakobsoft Seite!',
-            buttonLink: 'jakobsoft',
+            buttonAction: () => {
+                currentSections = SectionsJakobsoft;
+                renderSections(currentSections);
+            }
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
@@ -62,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'SCAMCRAFT.NET',
             description: 'Der Beste Server Der Welt.',
             buttonText: 'Leider Gratgesperrt! (Gratsperre.virus)',
-            buttonLink: '#', // Disabled button
             disabled: true,
         },
         {
@@ -75,12 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ];
 
+    // Define the sections for Jakobsoft
     const SectionsJakobsoft = [
         {
-            imgSrc: 'https://download.scamcraft.net/img/seatables.png',
+            imgSrc: 'https://download.scamcraft.net/img/404.png',
             imgAlt: 'Seatables',
             title: 'JAKOBSOFT-SEITE',
-            description: 'UNDER CONTRUCTION',
+            description: 'UNDER CONSTRUCTION',
             buttonText: '!!!!!',
             buttonAction: () => alert('This feature is under construction!'), // JavaScript code to run
         }
@@ -90,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mainContent = document.getElementById('main-content');
 
+    // Function to render sections
     function renderSections(sections) {
         mainContent.innerHTML = ''; // Clear existing content
 
@@ -135,10 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add switch button
     const switchButton = document.createElement('button');
-    switchButton.textContent = 'Switch Sections';
+    switchButton.textContent = 'Switch to Jakobsoft Sections';
     switchButton.onclick = () => {
-        currentSections = SectionsJakobsoft;
+        currentSections = (currentSections === SectionsMain) ? SectionsJakobsoft : SectionsMain;
         renderSections(currentSections);
+        switchButton.textContent = (currentSections === SectionsMain) ? 'Switch to Jakobsoft Sections' : 'Switch to Main Sections';
     };
     document.body.insertBefore(switchButton, mainContent);
 });
