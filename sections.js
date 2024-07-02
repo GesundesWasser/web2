@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderSections(currentSections);
             },
             imgStyles: { width: '50px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Du Geben Zeitmaschine!',
             buttonLink: 'timemachine/',
             imgStyles: { width: '65px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/seatables.png',
@@ -28,8 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
             title: '',
             description: 'Die BESTEN Sitze der WELT! (Made in China!)',
             buttonText: 'Ich Kaufe!',
-            buttonLink: 'seatables',
+            buttonAction: () => {
+                currentSections = SectionsSeatables;
+                renderSections(currentSections);
+            },
             imgStyles: { width: '65px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/gratspiel-logo.png',
@@ -39,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Zur Gratspiel Seite!',
             buttonLink: 'gratspiel.virus',
             imgStyles: { width: '130px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/minecraft.png',
@@ -48,15 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Anzeigen',
             buttonLink: 'minecraft',
             imgStyles: { width: '50px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/book.png',
             imgAlt: 'Stadtordnung',
             title: 'Stadtordnung',
             description: 'Die Regeln von MCDONELTS CITY (Die Schmeißt man ins Klo und sind NICHT zum Lesen da!)',
-            buttonText: 'Anzeigen',
-            buttonLink: 'stadtordnung/',
+            buttonText: 'Leider Gratgesperrt! (Gratsperre.virus)',
+            disabled: true,
             imgStyles: { width: '65px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/codename-kapsel-security.png',
@@ -66,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Zur Kapselsecurity Alpha!',
             buttonLink: 'accounts/',
             imgStyles: { width: '65px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/scamcraft-logo.png',
@@ -75,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Leider Gratgesperrt! (Gratsperre.virus)',
             disabled: true,
             imgStyles: { width: '65px', height: '65px' },
+            showButton: true,
         },
         {
             imgSrc: 'https://download.scamcraft.net/img/stellar.png',
@@ -84,8 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Zur Stellarvideo Alpha!',
             buttonLink: 'stellarvideo/',
             imgStyles: { width: '65px', height: '65px' },
+            showButton: true,
         },
     ];
+
     // Define the sections for Jakobsoft
     const SectionsJakobsoft = [
         {
@@ -95,7 +108,93 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'UNDER CONSTRUCTION',
             buttonText: '!!!!!',
             buttonAction: () => alert('This feature is under construction!'), // JavaScript code to run
+            showButton: true,
         }
+    ];
+
+    const SectionsSeatables = [
+        {
+            imgSrc: 'https://download.scamcraft.net/img/404.png',
+            imgAlt: 'Seatables',
+            title: 'SEATABLES-SEITE',
+            description: 'UNDER CONSTRUCTION',
+            buttonText: '!!!!!',
+            buttonAction: () => alert('This feature is under construction!'), // JavaScript code to run
+            showButton: true,
+        }
+    ];
+    
+    const SectionsMinecraft = [
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/1.png',
+            imgAlt: 'Bedwars',
+            title: 'Made By: Fassade Inc.',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/2.png',
+            imgAlt: 'Bedwars',
+            title: 'Die Erste MÜLLBASE!',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/3.png',
+            imgAlt: 'Bedwars',
+            title: 'Camo Chamber!',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/4.png',
+            imgAlt: 'Bedwars',
+            title: 'Die Erste Müllbase',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/5.png',
+            imgAlt: 'Bedwars',
+            title: 'Camo Chamber!',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/6.png',
+            imgAlt: 'Bedwars',
+            title: 'Der Müllchamber (Besser)!',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/7.png',
+            imgAlt: 'Bedwars',
+            title: 'Der Mystery Hallway',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/8.png',
+            imgAlt: 'Bedwars',
+            title: 'Der Beste "Cooler President!"',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/9.png',
+            imgAlt: 'Bedwars',
+            title: 'Win? Was Das?',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/bedwars/10.png',
+            imgAlt: 'Bedwars',
+            title: 'Oha, WIN!',
+            imgStyles: { width: '480px', height: '270px' },
+            showButton: false,
+        },
     ];
 
     let currentSections = SectionsMain;
@@ -128,20 +227,22 @@ document.addEventListener('DOMContentLoaded', () => {
             descriptionElement.textContent = section.description;
             sectionElement.appendChild(descriptionElement);
 
-            const buttonElement = document.createElement('button');
-            buttonElement.textContent = section.buttonText;
+            if (section.showButton) {
+                const buttonElement = document.createElement('button');
+                buttonElement.textContent = section.buttonText;
 
-            if (section.disabled) {
-                buttonElement.disabled = true;
-            } else if (section.buttonAction) {
-                buttonElement.onclick = section.buttonAction; // Execute JavaScript function
-            } else {
-                buttonElement.onclick = () => {
-                    window.location.href = section.buttonLink;
-                };
+                if (section.disabled) {
+                    buttonElement.disabled = true;
+                } else if (section.buttonAction) {
+                    buttonElement.onclick = section.buttonAction; // Execute JavaScript function
+                } else {
+                    buttonElement.onclick = () => {
+                        window.location.href = section.buttonLink;
+                    };
+                }
+
+                sectionElement.appendChild(buttonElement);
             }
-
-            sectionElement.appendChild(buttonElement);
 
             mainContent.appendChild(sectionElement);
         });
@@ -149,14 +250,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial render
     renderSections(currentSections);
-
-    // Add switch button
-    const switchButton = document.createElement('button');
-    switchButton.textContent = 'Switch to Jakobsoft Sections';
-    switchButton.onclick = () => {
-        currentSections = (currentSections === SectionsMain) ? SectionsJakobsoft : SectionsMain;
-        renderSections(currentSections);
-        switchButton.textContent = (currentSections === SectionsMain) ? 'Switch to Jakobsoft Sections' : 'Switch to Main Sections';
-    };
-    document.body.insertBefore(switchButton, mainContent);
 });
