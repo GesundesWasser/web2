@@ -1,0 +1,144 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const SectionsMain = [
+        {
+            imgSrc: 'https://download.scamcraft.net/img/jakobsoftlogo-ohne-schrift.png',
+            imgAlt: 'Jakobsoft',
+            title: 'Jakobsoft',
+            description: 'Jakobsoft Software Provider',
+            buttonText: 'Zur Jakobsoft Seite!',
+            buttonLink: 'jakobsoft',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
+            imgAlt: 'Time Machine',
+            title: 'Time Machine',
+            description: 'Die Zeitmaschine bringt dich zu jedem Codename Zurück!',
+            buttonText: 'Du Geben Zeitmaschine!',
+            buttonLink: 'timemachine/',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/seatables.png',
+            imgAlt: 'Seatables',
+            title: 'Seatables',
+            description: 'Die BESTEN Sitze der WELT! (Made in China!)',
+            buttonText: 'Ich Kaufe!',
+            buttonLink: 'seatables',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/gratspiel-logo.png',
+            imgAlt: 'Gratspiel.Virus',
+            title: '',
+            description: 'Die Besten Vir- Ähhh Spiele!',
+            buttonText: 'Zur Gratspiel Seite!',
+            buttonLink: 'gratspiel.virus',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/minecraft.png',
+            imgAlt: 'Minecraft',
+            title: 'Minecraft',
+            description: 'Die Besten Basen, Deathchamber, Müllchamber und die Ultimative Blockade!',
+            buttonText: 'Anzeigen',
+            buttonLink: 'minecraft',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/book.png',
+            imgAlt: 'Stadtordnung',
+            title: 'Stadtordnung',
+            description: 'Die Regeln von MCDONELTS CITY (Die Schmeißt man ins Klo und sind NICHT zum Lesen da!)',
+            buttonText: 'Anzeigen',
+            buttonLink: 'stadtordnung/',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/codename-kapsel-security.png',
+            imgAlt: 'Codename Kapselsecurity',
+            title: 'Codename Kapselsecurity',
+            description: 'Der Login Für Codename Kapselsecurity!',
+            buttonText: 'Zur Kapselsecurity Alpha!',
+            buttonLink: 'accounts/',
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/scamcraft-logo.png',
+            imgAlt: 'SCAMCRAFT',
+            title: 'SCAMCRAFT.NET',
+            description: 'Der Beste Server Der Welt.',
+            buttonText: 'Leider Gratgesperrt! (Gratsperre.virus)',
+            buttonLink: '#', // Disabled button
+            disabled: true,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/stellar.png',
+            imgAlt: 'Codename Stellarvideo',
+            title: 'Codename Stellarvideo',
+            description: 'Der Login Für Codename Stellarvideo!',
+            buttonText: 'Zur Stellarvideo Alpha!',
+            buttonLink: 'stellarvideo/',
+        },
+    ];
+
+    const SectionsJakobsoft = [
+        {
+            imgSrc: 'https://download.scamcraft.net/img/seatables.png',
+            imgAlt: 'Seatables',
+            title: 'JAKOBSOFT-SEITE',
+            description: 'UNDER CONTRUCTION',
+            buttonText: '!!!!!',
+            buttonAction: () => alert('This feature is under construction!'), // JavaScript code to run
+        }
+    ];
+
+    let currentSections = SectionsMain;
+
+    const mainContent = document.getElementById('main-content');
+
+    function renderSections(sections) {
+        mainContent.innerHTML = ''; // Clear existing content
+
+        sections.forEach((section) => {
+            const sectionElement = document.createElement('section');
+
+            const imgElement = document.createElement('img');
+            imgElement.src = section.imgSrc;
+            imgElement.alt = section.imgAlt;
+            sectionElement.appendChild(imgElement);
+
+            if (section.title) {
+                const titleElement = document.createElement('h2');
+                titleElement.textContent = section.title;
+                sectionElement.appendChild(titleElement);
+            }
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = section.description;
+            sectionElement.appendChild(descriptionElement);
+
+            const buttonElement = document.createElement('button');
+            buttonElement.textContent = section.buttonText;
+
+            if (section.disabled) {
+                buttonElement.disabled = true;
+            } else if (section.buttonAction) {
+                buttonElement.onclick = section.buttonAction; // Execute JavaScript function
+            } else {
+                buttonElement.onclick = () => {
+                    window.location.href = section.buttonLink;
+                };
+            }
+
+            sectionElement.appendChild(buttonElement);
+
+            mainContent.appendChild(sectionElement);
+        });
+    }
+
+    // Initial render
+    renderSections(currentSections);
+
+    // Add switch button
+    const switchButton = document.createElement('button');
+    switchButton.textContent = 'Switch Sections';
+    switchButton.onclick = () => {
+        currentSections = SectionsJakobsoft;
+        renderSections(currentSections);
+    };
+    document.body.insertBefore(switchButton, mainContent);
+});

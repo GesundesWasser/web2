@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mcdonelts.city</title>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="styles.css" />
     <script defer src="main.js"></script>
-    <script defer src="app.js"></script>
+    <script defer src="sections.js"></script>
   </head>
   
   <style>
-    section#section1 img {
+    section img {
       width: 50px;
       height: 65px;
     }
@@ -24,26 +21,18 @@
 
   <body>
     <!-- Navbar -->
-
     <nav class="navbar">
       <ul class="navbar-nav">
         <li class="nav-item"><a href="/site">Home</a></li>
         <li class="nav-item"><a href="javascript:alert('Leider Gratgesperrt! (Gratsperre.virus)')">Login</a></li>
 
         <!-- Dropdown -->
-
         <li class="nav-item has-dropdown">
           <a href="#">Theme</a>
           <ul class="dropdown">
-            <li class="dropdown-item">
-              <a id="light" href="#">light</a>
-            </li>
-            <li class="dropdown-item">
-              <a id="dark" href="#">dark</a>
-            </li>
-            <li class="dropdown-item">
-              <a id="solar" href="#">solarize</a>
-            </li>
+            <li class="dropdown-item"><a id="light" href="#">light</a></li>
+            <li class="dropdown-item"><a id="dark" href="#">dark</a></li>
+            <li class="dropdown-item"><a id="solar" href="#">solarize</a></li>
           </ul>
         </li>
 
@@ -56,72 +45,13 @@
       <h1>mcdonelts.city<br /></h1>
     </header>
 
-  <main>
-    <section id="section1">
-      <img src="https://download.scamcraft.net/img/jakobsoftlogo-ohne-schrift.png" alt="Jakobsoft">
-      <h2>Jakobsoft</h2>
-      <p>Jakobsoft Software Provider</p>
-      <button onclick="window.location.href='jakobsoft'">Zur Jakobsoft Seite!</button>
-  </section>
-  <section id="section2">
-      <img src="https://download.scamcraft.net/img/timemachine.png" alt="Time Machine">
-      <h2>Time Machine</h2>
-      <p>Die Zeitmaschine bringt dich zu jedem Codename Zurück!</p>
-      <button onclick="window.location.href='timemachine/'">Du Geben Zeitmaschine!</button>
-  </section>
-  <section id="section3">
-      <img src="https://download.scamcraft.net/img/seatables.png" alt="Seatables">
-      <h2>Seatables</h2>
-      <p>Die BESTEN Sitze der WELT! (Made in China!)</p>
-      <button onclick="window.location.href='seatables'">Ich Kaufe!</button>
-  </section>
-  <section id="section4">
-      <img src="https://download.scamcraft.net/img/gratspiel-logo.png" alt="Gratspiel.Virus">
-      <p>Die Besten Vir- Ähhh Spiele!</p>
-      <button onclick="window.location.href='gratspiel.virus'">Zur Gratspiel Seite!</button>
-  </section>
-  <section id="section5">
-      <img src="https://download.scamcraft.net/img/minecraft.png" alt="Minecraft">
-      <h2>Minecraft</h2>
-      <p>Die Besten Basen, Deathchamber, Müllchamber und die Ultimative Blockade!</p>
-      <button onclick="window.location.href='minecraft'">Anzeigen</button>
-  </section>
-  <section id="section6">
-      <img src="https://download.scamcraft.net/img/book.png" alt="Stadtordnung">
-      <h2>Stadtordnung</h2>
-      <p>Die Regeln von MCDONELTS CITY (Die Schmeißt man ins Klo und sind NICHT zum Lesen da!)</p>
-      <button onclick="window.location.href='stadtordnung/'">Anzeigen</button>
-  </section>
-  <section id="section7">
-      <img src="https://download.scamcraft.net/img/codename-kapsel-security.png" alt="Codename Kapselsecurity">
-      <h2>Codename Kapselsecurity</h2>
-      <p>Der Login Für Codename Kapselsecurity!</p>
-      <button onclick="window.location.href='accounts/'">Zur Kapselsecurity Alpha!</button>
-  </section>
-  <section id="section8">
-      <img src="https://download.scamcraft.net/img/scamcraft-logo.png" alt="SCAMCRAFT">
-      <h2>SCAMCRAFT.NET</h2>
-      <p>Der Beste Server Der Welt.</p>
-      <button type="button" disabled>Leider Gratgesperrt! (Gratsperre.virus)</button>
-  </section>
-  <section id="section9">
-      <img src="https://download.scamcraft.net/img/stellar.png" alt="Codename Stellarvideo">
-      <h2>Codename Stellarvideo</h2>
-      <p>Der Login Für Codename Stellarvideo!</p>
-      <button onclick="window.location.href='stellarvideo/'">Zur Stellarvideo Alpha!</button>
-  </section>
-  <section id="section10">
-      <img src="https://download.scamcraft.net/img/shop.png" alt="Shop">
-      <h2>Shop</h2>
-      <p>Der Beste Shop der Welt von WAWAWOGO Inc.</p>
-      <button type="button" disabled>Leider Gratgesperrt! (Gratsperre.virus)</button>
-  </section>
-  </main>
+    <main id="main-content">
+      <!-- Sections will be injected here by JavaScript -->
+    </main>
 
-<footer>
-<p>&copy; <span id="copyright-year">Year Error</span> mcdonelts.city</p> <!-- Year Error is for when its Verbuggt! -->
-<p><span id="site-name-version">Name and Version Error</span></p> <!-- Name and Version Error is for when its Verbuggt! -->
-</footer>
-
-</body>
+    <footer>
+      <p>&copy; <span id="copyright-year">Year Error</span> mcdonelts.city</p> <!-- Year Error is for when its Verbuggt! -->
+      <p><span id="site-name-version">Name and Version Error</span></p> <!-- Name and Version Error is for when its Verbuggt! -->
+    </footer>
+  </body>
 </html>
