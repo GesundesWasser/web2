@@ -20,7 +20,10 @@ $(document).ready(function() {
             title: 'Time Machine',
             description: 'Die Zeitmaschine bringt dich zu jedem Codename Zurück!',
             buttonText: 'Du Geben Zeitmaschine!',
-            buttonLink: 'timemachine/',
+            buttonAction: () => {
+                currentSections = SectionsTimemachine;
+                renderSections(currentSections);
+            },
             imgStyles: { width: '65px', height: '65px' },
             showButton: true,
         },
@@ -43,7 +46,10 @@ $(document).ready(function() {
             title: '',
             description: 'Die Besten Vir- Ähhh Spiele!',
             buttonText: 'Zur Gratspiel Seite!',
-            buttonLink: 'gratspiel.virus',
+            buttonAction: () => {
+                currentSections = SectionsGratspiel;
+                renderSections(currentSections);
+            },
             imgStyles: { width: '130px', height: '65px' },
             showButton: true,
         },
@@ -153,18 +159,78 @@ $(document).ready(function() {
         }
     ];
 
+    const SectionsTimemachine = [
+        {
+            imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
+            imgAlt: 'Timemachine',
+            title: 'WAGO Klemme',
+            description: 'Welcome to Codename Kapselordnung! Click the Button for WAGO Klemme!',
+            buttonText: 'Anzeigen!',
+            buttonLink: 'timemachine/wagoklemme',
+            showButton: true,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
+            imgAlt: 'Timemachine',
+            title: 'Lange Geschichte',
+            description: 'Der Text? Laange Geschichte ;)',
+            buttonText: 'Anzeigen!',
+            buttonLink: 'timemachine/langegeschichte',
+            showButton: true,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
+            imgAlt: 'Timemachine',
+            title: 'Stadtunordnung',
+            description: 'Stadtordnung? NÖ! Stadtunordnung: JÖ!',
+            buttonText: 'Anzeigen!',
+            buttonLink: 'timemachine/stadtunordnung',
+            showButton: true,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/timemachine.png',
+            imgAlt: 'Timemachine',
+            title: 'Vergammelkapsel',
+            description: 'Die Kapsel: Bestellen! Leider Vergammelt :(',
+            buttonText: 'Anzeigen!',
+            buttonLink: 'timemachine/vergammel',
+            showButton: true,
+        },
+    ];
+
     const SectionsSeatables = [
         {
             imgSrc: 'https://download.scamcraft.net/img/404.png',
             imgAlt: 'Seatables',
-            title: 'SEATABLES-SEITE',
-            description: 'UNDER CONSTRUCTION',
-            buttonText: '!!!!!',
+            title: '',
+            description: '',
+            buttonText: '',
             buttonAction: () => alert('This feature is under construction!'),
             showButton: true,
         }
     ];
-    
+
+    const SectionsGratspiel = [
+        {
+            imgSrc: 'https://download.scamcraft.net/img/404.png',
+            imgAlt: 'Snake',
+            title: 'Snake',
+            description: 'Ein simples Spiel, dessen Ziel es ist, so viele Punkte wie möglich einzusammeln. (IST HALT SNAKE!)',
+            buttonText: 'ICH WILL SCHLANGE!',
+            buttonLink: 'gratspiel.virus/snake',
+            showButton: true,
+        },
+        {
+            imgSrc: 'https://download.scamcraft.net/img/404.png',
+            imgAlt: 'Guess the Number',
+            title: 'Guess the Number',
+            description: 'Ein simples Spiel, dessen Ziel es ist, so viele Punkte wie möglich einzusammeln.',
+            buttonText: 'ICH WILL SCHLANGE!',
+            buttonLink: 'gratspiel.virus/number',
+            showButton: true,
+        }
+    ];
+
     const SectionsMinecraft = [
         {
             imgSrc: 'https://download.scamcraft.net/img/bedwars/1.png',
