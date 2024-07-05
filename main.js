@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function() {
     // Define the sections for the main content
     const SectionsMain = [
         {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonLink: 'stellarvideo/',
             imgStyles: { width: '65px', height: '65px' },
             showButton: true,
-        },
+        }
     ];
 
     // Define the sections for Jakobsoft
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonText: 'Leider Gratgesperrt! (Gratsperre.virus)',
             disabled: true,
             showButton: true,
-        },
+        }
     ];
 
     const SectionsSeatables = [
@@ -235,57 +235,54 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Oha, WIN!',
             imgStyles: { width: '480px', height: '270px' },
             showButton: false,
-        },
+        }
     ];
 
     let currentSections = SectionsMain;
 
-    const mainContent = document.getElementById('main-content');
+    const $mainContent = $('#main-content');
 
     // Function to render sections
     function renderSections(sections) {
-        mainContent.innerHTML = ''; // Clear existing content
+        $mainContent.empty(); // Clear existing content
 
         sections.forEach((section) => {
-            const sectionElement = document.createElement('section');
+            const $sectionElement = $('<section></section>');
 
-            const imgElement = document.createElement('img');
-            imgElement.src = section.imgSrc;
-            imgElement.alt = section.imgAlt;
+            const $imgElement = $('<img>');
+            $imgElement.attr('src', section.imgSrc);
+            $imgElement.attr('alt', section.imgAlt);
             // Apply image styles from the section object
             if (section.imgStyles) {
-                Object.assign(imgElement.style, section.imgStyles);
+                $imgElement.css(section.imgStyles);
             }
-            sectionElement.appendChild(imgElement);
+            $sectionElement.append($imgElement);
 
             if (section.title) {
-                const titleElement = document.createElement('h2');
-                titleElement.textContent = section.title;
-                sectionElement.appendChild(titleElement);
+                const $titleElement = $('<h2></h2>').text(section.title);
+                $sectionElement.append($titleElement);
             }
 
-            const descriptionElement = document.createElement('p');
-            descriptionElement.textContent = section.description;
-            sectionElement.appendChild(descriptionElement);
+            const $descriptionElement = $('<p></p>').text(section.description);
+            $sectionElement.append($descriptionElement);
 
             if (section.showButton) {
-                const buttonElement = document.createElement('button');
-                buttonElement.textContent = section.buttonText;
+                const $buttonElement = $('<button></button>').text(section.buttonText);
 
                 if (section.disabled) {
-                    buttonElement.disabled = true;
+                    $buttonElement.prop('disabled', true);
                 } else if (section.buttonAction) {
-                    buttonElement.onclick = section.buttonAction; // Execute JavaScript function
+                    $buttonElement.click(section.buttonAction); // Execute JavaScript function
                 } else {
-                    buttonElement.onclick = () => {
+                    $buttonElement.click(() => {
                         window.location.href = section.buttonLink;
-                    };
+                    });
                 }
 
-                sectionElement.appendChild(buttonElement);
+                $sectionElement.append($buttonElement);
             }
 
-            mainContent.appendChild(sectionElement);
+            $mainContent.append($sectionElement);
         });
     }
 
@@ -293,73 +290,58 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSections(currentSections);
 });
 
-
-window.onload = function() {
+$(window).on('load', function() {
     var currentYear = new Date().getFullYear();
-    document.getElementById('copyright-year').innerText = currentYear;
-    document.getElementById('site-name-version').innerText = "Codename Kapselordnung Release v1.9 -> R1";
-  };
-  
-  // DOM Elements
-  
-  const darkButton = document.getElementById('dark');
-  const lightButton = document.getElementById('light');
-  const solarButton = document.getElementById('solar');
-  const body = document.body;
-  
-  
-  // Apply the cached theme on reload
-  
-  const theme = localStorage.getItem('theme');
-  const isSolar = localStorage.getItem('isSolar');
-  
-  if (theme) {
-    body.classList.add(theme);
-    isSolar && body.classList.add('solar');
+    $('#copyright-year').text(currentYear);
+    $('#site-name-version').text("Codename Kapselordnung Release v1.9 -> R1");
+});
+
+// DOM Elements
+
+const $darkButton = $('#dark');
+const $lightButton = $('#light');
+const $solarButton = $('#solar');
+const $body = $('body');
+
+// Apply the cached theme on reload
+
+const theme = localStorage.getItem('theme');
+const isSolar = localStorage.getItem('isSolar');
+
+if (theme) {
+    $body.addClass(theme);
     if (isSolar) {
-      solarButton.innerText = "normalize";
-      solarButton.style.cssText = `--bg-solar: white;`;
+        $body.addClass('solar');
+        $solarButton.text("normalize");
+        $solarButton.css('--bg-solar', 'white');
     }
-  } else {
-      body.classList.add('light');
-      localStorage.setItem('theme', 'light');
-  }
-  
-  // Button Event Handlers
-  
-  darkButton.onclick = () => {
-    body.classList.replace('light', 'dark');
-    localStorage.setItem('theme', 'dark');
-  };
-  
-  lightButton.onclick = () => {
-    body.classList.replace('dark', 'light');
-  
+} else {
+    $body.addClass('light');
     localStorage.setItem('theme', 'light');
-  };
-  
-  solarButton.onclick = () => {
-  
-    if (body.classList.contains('solar')) {
-      
-      body.classList.remove('solar');
-      solarButton.style.cssText = `
-        --bg-solar: var(--yellow);
-      `
-  
-      solarButton.innerText = 'solarize';
-  
-      localStorage.removeItem('isSolar');
-  
+}
+
+// Button Event Handlers
+
+$darkButton.on('click', () => {
+    $body.removeClass('light').addClass('dark');
+    localStorage.setItem('theme', 'dark');
+});
+
+$lightButton.on('click', () => {
+    $body.removeClass('dark').addClass('light');
+    localStorage.setItem('theme', 'light');
+});
+
+$solarButton.on('click', () => {
+    if ($body.hasClass('solar')) {
+        $body.removeClass('solar');
+        $solarButton.css('--bg-solar', 'var(--yellow)');
+        $solarButton.text('solarize');
+        localStorage.removeItem('isSolar');
     } else {
-  
-      solarButton.style.cssText = `
-        --bg-solar: white;
-      `
-  
-      body.classList.add('solar');
-      solarButton.innerText = 'normalize';
-  
-      localStorage.setItem('isSolar', true);
+        $solarButton.css('--bg-solar', 'white');
+        $body.addClass('solar');
+        $solarButton.text('normalize');
+        localStorage.setItem('isSolar', true);
     }
-  };
+});
