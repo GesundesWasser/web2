@@ -293,7 +293,7 @@ $(document).ready(function() {
 $(window).on('load', function() {
     var currentYear = new Date().getFullYear();
     $('#copyright-year').text(currentYear);
-    $('#site-name-version').text("Codename Kapselordnung Release v1.9 -> R1");
+    $('#site-name-version').text("Codename Kapselordnung Release v1.9 -> R2");
 });
 
 // DOM Elements
